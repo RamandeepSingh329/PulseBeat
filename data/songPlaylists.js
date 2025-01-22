@@ -2,6 +2,18 @@
 var listSong = [
     [
         {
+            name: "Don",
+            singer: ["Diljit Dosanjh Ft Shah Rukh Khan"],
+            path: "./assets/music/listSong1/song34.mp3",
+            image: "./assets/img/music/listSong1/song26.jpg"
+        },
+        {
+            name: "Lehnga",
+            singer: ["Ravneet"],
+            path: "./assets/music/listSong1/song35.mp3",
+            image: "./assets/img/music/listSong1/song27.jpg"
+        },
+        {
             name: "Nagni",
             singer: ["Gippy Grewal Ft Simran Chaudhary"],
             path: "./assets/music/listSong1/song32.mp3",
@@ -148,6 +160,12 @@ var listSong = [
         },
     ],
     [
+        {
+            name: "Pirates",
+            singer: ["Liu"],
+            path: "./assets/music/listSong2/song25.mp3",
+            image: "./assets/img/music/listSong2/song23.jpg"
+        },
         {
             name: "Safari ",
             singer: ["Sarena"],
