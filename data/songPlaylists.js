@@ -1,12 +1,7 @@
 
 var listSong = [
     [
-        {
-            name: "Don",
-            singer: ["Diljit Dosanjh Ft Shah Rukh Khan"],
-            path: "./assets/music/listSong1/song34.mp3",
-            image: "./assets/img/music/listSong1/song26.jpg"
-        },
+      
         {
             name: "Lehnga",
             singer: ["Ravneet"],
