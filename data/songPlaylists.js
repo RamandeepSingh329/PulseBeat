@@ -9,20 +9,20 @@ var listSong = [
             image: "./assets/img/music/listSong1/song27.jpg"
         },
         {
-            name: "Nagni",
-            singer: ["Gippy Grewal Ft Simran Chaudhary"],
+            name: "Asla",
+            singer: ["Pari Pandher"],
             path: "./assets/music/listSong1/song32.mp3",
             image: "./assets/img/music/listSong1/song25.jpg"
         },
         {
-            name: "Mombatiye",
-            singer: ["Diljit Dosanjh"],
+            name: "Tera Yaar Rakane",
+            singer: ["Shree Brar Ft Gurlez Akhtar"],
             path: "./assets/music/listSong1/song12.mp3",
             image: "./assets/img/music/listSong1/song12.jpg"
         },
         {
-            name: "Talashi",
-            singer: ["Mankirt Aulakh Ft Gurlez Akhtar"],
+            name: "Doonghe Nain",
+            singer: ["Pari Pandher"],
             path: "./assets/music/listSong1/song24.mp3",
             image: "./assets/img/music/listSong1/song24.jpg"
         },
