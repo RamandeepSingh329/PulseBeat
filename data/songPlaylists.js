@@ -311,8 +311,8 @@ var listSong = [
             image: "./assets/img/music/listSong3/song12.jpg"
         },
         {
-            name: "Adaat",
-            singer: ["Ninja"],
+            name: "We Own It",
+            singer: ["Wiz Khalifa Ft 2 Chainz"],
             path: "./assets/music/listSong3/song2.mp3",
             image: "./assets/img/music/listSong3/song2.jpg"
         },
@@ -336,38 +336,38 @@ var listSong = [
         },
     
         {
-            name: "Bewafai Kar Gya",
-            singer: ["B Praak"],
+            name: "Unstoppable",
+            singer: ["Sia"],
             path: "./assets/music/listSong3/song6.mp3",
             image: "./assets/img/music/listSong3/song6.jpg"
         },
         {
-            name: "Kis Morh Te",
-            singer: ["Jyoti Nooran Ft B Praak"],
+            name: "Get Ready To Fight Again",
+            singer: ["Pranaay"],
             path: "./assets/music/listSong3/song7.mp3",
             image: "./assets/img/music/listSong3/song7.jpg"
         },
         {
-            name: "Shukriya",
-            singer: ["B Praak"],
+            name: "Never Fold",
+            singer: ["Sidhu Moose Wala Ft Big Bird"],
             path: "./assets/music/listSong3/song8.mp3",
             image: "./assets/img/music/listSong3/song8.jpg"
         },
         {
-            name: "Mera Yaar",
-            singer: ["Gurnam Bhullar"],
+            name: "Shot Caller",
+            singer: ["Tegi Pannu"],
             path: "./assets/music/listSong3/song9.mp3",
             image: "./assets/img/music/listSong3/song9.jpg"
         },
         {
-            name: "Fark",
-            singer: ["Gippy Grewal"],
+            name: "No Debts",
+            singer: ["Arjan Dhillon"],
             path: "./assets/music/listSong3/song10.mp3",
             image: "./assets/img/music/listSong3/song10.jpg"
         },
         {
-            name: "Tod E Dil",
-            singer: ["Ammy Virk"],
+            name: "Sun Fer",
+            singer: ["Khan Bhiani"],
             path: "./assets/music/listSong3/song11.mp3",
             image: "./assets/img/music/listSong3/song11.jpg"
         },
