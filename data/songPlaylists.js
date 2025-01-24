@@ -21,16 +21,34 @@ var listSong = [
             image: "./assets/img/music/listSong1/song12.jpg"
         },
         {
+            name: "Powerhouse",
+            singer: ["Amrit Maan Ft Bhupinder Babbal"],
+            path: "./assets/music/listSong1/song11.mp3",
+            image: "./assets/img/music/listSong1/song11.jpg"
+        },
+        {
             name: "Doonghe Nain",
             singer: ["Pari Pandher"],
             path: "./assets/music/listSong1/song24.mp3",
             image: "./assets/img/music/listSong1/song24.jpg"
         },
         {
+            name: "Ammi",
+            singer: ["Kamal Khan"],
+            path: "./assets/music/listSong1/song30.mp3",
+            image: "./assets/img/music/listSong1/song28.jpg"
+        },
+        {
             name: "Gora Rang",
             singer: ["Sabba Ft Jasmeen Akhtar"],
             path: "./assets/music/listSong1/song1.mp3",
             image: "./assets/img/music/listSong1/song1.jpg"
+        },
+        {
+            name: "Qatil Surma",
+            singer: ["Himmat Sandhu"],
+            path: "./assets/music/listSong1/song15.mp3",
+            image: "./assets/img/music/listSong1/song15.jpg"
         },
         {
             name: "Hor Sanu Ki Chahida",
@@ -63,10 +81,10 @@ var listSong = [
             image: "./assets/img/music/listSong1/song6.jpg"
         },
         {
-            name: "Thank God",
+            name: "Mirrors",
             singer: ["Jordan Sandhu"],
             path: "./assets/music/listSong1/song7.mp3",
-            image: "./assets/img/music/listSong1/song7.jpg"
+            image: "./assets/img/music/listSong1/song5.jpg"
         },
         {
             name: "Jawani",
@@ -99,12 +117,7 @@ var listSong = [
             path: "./assets/music/listSong1/song14.mp3",
             image: "./assets/img/music/listSong1/song14.jpg"
         },
-        {
-            name: "Papi Munda",
-            singer: ["Mankirt Aulakh Ft Gur Sidhu"],
-            path: "./assets/music/listSong1/song15.mp3",
-            image: "./assets/img/music/listSong1/song15.jpg"
-        },
+       
         {
             name: "The King",
             singer: ["Amrit Maan"],
