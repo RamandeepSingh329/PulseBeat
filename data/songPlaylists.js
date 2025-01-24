@@ -1,7 +1,25 @@
 
 var listSong = [
     [
-      
+     
+        {
+            name: "Selfmade",
+            singer: ["Sidhu Moose Wala"],
+            path: "./assets/music/listSong1/song28.mp3",
+            image: "./assets/img/music/listSong1/song29.jpg"
+        },
+        {
+            name: "Stick Talk",
+            singer: ["Shooter Khalon Ft Gurlez Akhtar"],
+            path: "./assets/music/listSong1/song26.mp3",
+            image: "./assets/img/music/listSong1/song31.jpg"
+        },
+        {
+            name: "Sifat",
+            singer: ["Parmish Verma"],
+            path: "./assets/music/listSong1/song27.mp3",
+            image: "./assets/img/music/listSong1/song32.jpg"
+        },
         {
             name: "Lehnga",
             singer: ["Ravneet"],
@@ -25,6 +43,18 @@ var listSong = [
             singer: ["Amrit Maan Ft Bhupinder Babbal"],
             path: "./assets/music/listSong1/song11.mp3",
             image: "./assets/img/music/listSong1/song11.jpg"
+        },
+        {
+            name: "Taur Tappa",
+            singer: ["Shooter Khalon"],
+            path: "./assets/music/listSong1/song25.mp3",
+            image: "./assets/img/music/listSong1/song30.jpg"
+        },
+        {
+            name: "Car Culture",
+            singer: ["Laddi Chahal Ft Parmish Verma"],
+            path: "./assets/music/listSong1/song31.mp3",
+            image: "./assets/img/music/listSong1/song33.jpg"
         },
         {
             name: "Doonghe Nain",
@@ -57,8 +87,8 @@ var listSong = [
             image: "./assets/img/music/listSong1/song2.jpg"
         },
         {
-            name: "Sift",
-            singer: ["Bhalwaan"],
+            name: "Wavvy",
+            singer: ["Karan Aujla"],
             path: "./assets/music/listSong1/song3.mp3",
             image: "./assets/img/music/listSong1/song3.jpg"
         },
