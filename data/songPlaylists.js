@@ -199,6 +199,12 @@ var listSong = [
     ],
     [
         {
+            name: "Miles Above",
+            singer: ["Dharia"],
+            path: "./assets/music/listSong2/song22.mp3",
+            image: "./assets/img/music/listSong2/song24.jpg"
+        },
+        {
             name: "Pirates",
             singer: ["Liu"],
             path: "./assets/music/listSong2/song25.mp3",
@@ -209,6 +215,12 @@ var listSong = [
             singer: ["Sarena"],
             path: "./assets/music/listSong2/song1.mp3",
             image: "./assets/img/music/listSong2/song1.jpg"
+        },
+        {
+            name: "Cold As Ice",
+            singer: ["Dharia "],
+            path: "./assets/music/listSong2/song4.mp3",
+            image: "./assets/img/music/listSong2/song25.jpg"
         },
         {
             name: "Never Give Up",
@@ -235,11 +247,16 @@ var listSong = [
             path: "./assets/music/listSong2/song24.mp3",
             image: "./assets/img/music/listSong2/song22.jpg"
         },
-
+        {
+            name: "Tara Rita",
+            singer: ["Dharia"],
+            path: "./assets/music/listSong2/song26.mp3",
+            image: "./assets/img/music/listSong2/song26.jpg"
+        },
         {
             name: "Gang Up",
             singer: ["Wiz Khalifa Ft 2 Chainz"],
-            path: "./assets/music/listSong2/song4.mp3",
+            path: "./assets/music/listSong2/song27.mp3",
             image: "./assets/img/music/listSong2/song4.jpg"
         },
         {
