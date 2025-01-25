@@ -19,7 +19,7 @@ const Themes = [
                 navigationText: "#dadada",
                 placeholderText: "#dadada",
             },
-            playerImage: './assets/img/themeBgs/listTheme1/playerThemes/theme1.png',
+            playerImage: './assets/img/modalTheme/modalTheme3/modaltheme1.jpg',
         },
         {
             image:'./assets/img/themeBgs/listTheme1/theme2.jpg',
