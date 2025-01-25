@@ -1,100 +1,71 @@
 const listThemes = [
     {
-        type: 'Chủ đề',
+        type: 'Topic',
         themes: [
             {
                 name: 'Zing Music Awards',
                 image: './assets/img/modalThemes/modalTheme1/theme1.jpg'
             },
             {
-                name: 'Tháp Eiffel',
+                name: 'Eiffel Tower',
                 image: './assets/img/modalThemes/modalTheme1/theme2.jpg'
             },
         ]
     },
     {
-        type: 'Nghệ Sĩ',
+        type: 'Color Theme',
         themes: [
             {
-                name: 'Rosé',
-                image: './assets/img/modalThemes/modalTheme2/theme1.jpg'
-            },
-            {
-                name: 'IU',
-                image: './assets/img/modalThemes/modalTheme2/theme2.jpg'
-            },
-            {
-                name: 'Ji Chang Wook',
-                image: './assets/img/modalThemes/modalTheme2/theme3.jpg'
-            },
-            {
-                name: 'Lisa',
-                image: './assets/img/modalThemes/modalTheme2/theme4.jpg'
-            },
-            {
-                name: 'Jennie Kim',
-                image: './assets/img/modalThemes/modalTheme2/theme5.jpg'
-            },
-            {
-                name: 'Jisoo',
-                image: './assets/img/modalThemes/modalTheme2/theme6.jpg'
-            },
-        ]
-    },
-    {
-        type: 'Màu Tối',
-        themes: [
-            {
-                name: 'Tối',
+                name: 'Dark',
                 image: './assets/img/modalThemes/modalTheme3/theme1.jpg'
             },
             {
-                name: 'Tím',
+                name: 'Purple',
                 image: './assets/img/modalThemes/modalTheme3/theme2.jpg'
             },
             {
-                name: 'Xanh Đậm',
+                name: 'Dark Blue',
                 image: './assets/img/modalThemes/modalTheme3/theme3.jpg'
             },
             {
-                name: 'Xanh Biển',
+                name: 'Sea Blue',
                 image: './assets/img/modalThemes/modalTheme3/theme4.jpg'
             },
             {
-                name: 'Xanh Lá',
+                name: 'Green',
                 image: './assets/img/modalThemes/modalTheme3/theme5.jpg'
             },
             {
-                name: 'Nâu',
+                name: 'Brown',
                 image: './assets/img/modalThemes/modalTheme3/theme6.jpg'
             },
             {
-                name: 'Hồng',
+                name: 'Pink',
                 image: './assets/img/modalThemes/modalTheme3/theme7.jpg'
             },
             {
-                name: 'Đỏ',
+                name: 'Red',
                 image: './assets/img/modalThemes/modalTheme3/theme8.jpg'
             },
         ]
     },
     {
-        type: 'Màu Sáng',
+        type: 'Light Theme',
         themes: [
             {
-                name: 'Sáng',
+                name: 'Bright',
                 image: './assets/img/modalThemes/modalTheme4/theme1.jpg'
             },
             {
-                name: 'Xám',
+                name: 'Grey',
                 image: './assets/img/modalThemes/modalTheme4/theme2.jpg'
             },
             {
-                name: 'Xanh Nhạt',
+                name: 'Light Blue',
                 image: './assets/img/modalThemes/modalTheme4/theme3.jpg'
             },
             {
-                name: 'Hồng Cánh Sen',
+                name: 'Pink Lotus',
                 image: './assets/img/modalThemes/modalTheme4/theme4.jpg'
             },
         ]
