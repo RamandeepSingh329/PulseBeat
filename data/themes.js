@@ -1,7 +1,7 @@
 const Themes = [
     [
         {
-            image:'./assets/img/modalTheme/modalTheme3/theme1.jpg',
+            image:'".assets/img/modalThemes/modalTheme3.theme1.jpg"',
             colors: {
                 bgContentColor:"#ffffff1a",
                 borderBox:"rgb(255 255 255 / 20%)",
