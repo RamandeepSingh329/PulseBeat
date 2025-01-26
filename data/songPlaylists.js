@@ -9,10 +9,22 @@ var listSong = [
             image: "./assets/img/music/listSong1/song29.jpg"
         },
         {
+            name: "God Damn",
+            singer: ["Karan Aujla Ft Badshah"],
+            path: "./assets/music/listSong1/song36.mp3",
+            image: "./assets/img/music/listSong1/song35.jpg"
+        },
+        {
             name: "Stick Talk",
             singer: ["Shooter Khalon Ft Gurlez Akhtar"],
             path: "./assets/music/listSong1/song26.mp3",
             image: "./assets/img/music/listSong1/song31.jpg"
+        },
+        {
+            name: "Jogi",
+            singer: ["Sukhe"],
+            path: "./assets/music/listSong1/song33.mp3",
+            image: "./assets/img/music/listSong1/song34.jpg"
         },
         {
             name: "Sifat",
@@ -25,6 +37,12 @@ var listSong = [
             singer: ["Ravneet"],
             path: "./assets/music/listSong1/song35.mp3",
             image: "./assets/img/music/listSong1/song27.jpg"
+        },
+        {
+            name: "Players",
+            singer: ["Karan Aujla Ft Badshah"],
+            path: "./assets/music/listSong1/song37.mp3",
+            image: "./assets/img/music/listSong1/song36.jpg"
         },
         {
             name: "Asla",
