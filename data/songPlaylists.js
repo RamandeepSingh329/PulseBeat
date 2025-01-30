@@ -450,27 +450,27 @@ var listSong = [
             image: "./assets/img/music/listSong3/song11.jpg"
         },
          {
-            name: "Peaches",
-            singer: ["Justin Bieber", "Daniel Caesar", "Giveon"],
-            path: "./assets/music/listSong3/song12.mp3",
-            image: "./assets/img/music/listSong3/song12.jpg"
+            name: "Brothers Anthem",
+            singer: ["Vishal Dadlani Ft Ajay - Atul"],
+            path: "./assets/music/listSong3/song1.mp3",
+            image: "./assets/img/music/listSong3/song1.jpg"
         },
         {
-            name: "Stay",
-            singer: ["The Kid LAROI", "Justin Bieber"],
+            name: "Alone",
+            singer: ["Alan Walker"],
             path: "./assets/music/listSong3/song13.mp3",
             image: "./assets/img/music/listSong3/song13.jpg"
         },
         {
-            name: "Nevada",
-            singer: ["Vicetone"],
-            path: "./assets/music/listSong3/song14.mp3",
+            name: "Give Me Some Sunshine",
+            singer: ["Suraj Jagan"],
+            path: "./assets/music/listSong3/song21.mp3",
             image: "./assets/img/music/listSong3/song14.jpg"
         },
         {
-            name: "Hero",
-            singer: ["Cash Cash", "Christina Perri"],
-            path: "./assets/music/listSong3/song15.mp3",
+            name: "Get Ready To Fight",
+            singer: ["Benny Dayal"],
+            path: "./assets/music/listSong3/song22.mp3",
             image: "./assets/img/music/listSong3/song15.jpg"
         },
        
