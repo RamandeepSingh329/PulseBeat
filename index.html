@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="./assets/img/userimg/2.jpg" type="image/x-icon" />
-        <title>Pulse Beat - Feel The Music</title>
+        <link rel="icon" href="./assets/img/logos/logo.gif" type="image/x-icon" />
+        <title>Pulse Beat</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -18,23 +18,23 @@
         <![endif]-->
     </head>
     <body>
-        <div class="app grid" style="background-image: url(./assets/img/modalThemes/modalTheme3/theme1.jpg)">
+        <div class="app grid" style="background-image: none">
             <!-- Header -->
             <header class="header grid">
                 <div class="header__with-search">
                     <button class="header__button">
+                        <i class="bi bi-arrow-left header__button-icon"></i>
                     </button>
                     <button class="header__button button--disabled">
+                        <i class="bi bi-arrow-right header__button-icon"></i>
                     </button>
                     <div class="header__search">
-                        <input type="text" placeholder="Feel the music..." class="header__search-input">
+                        <input type="text" placeholder="Enter Song Name Or Artist..." class="header__search-input">
                         <div class="header__search-btn">
                             <i class="bi bi-search header__search-icon"></i>
                         </div>
                         <div class="header__search-history">
                             <ul class="header__search-list">
-                                <li class="header__search-item">
-                                 
                             </ul>
                         </div>
 
@@ -42,15 +42,11 @@
                     </div>
                 </div>
                 <div class="header__nav">
-                    
                     <ul class="header__nav-list">
-                        <li class="header__nav-item">
-                        </li>
                         <li class="header__nav-item hide-on-mobile">
+                            
+                        </li>
 
-                        </li>
-                        <li class="header__nav-item hide-on-mobile">
-                        </li>
                         <li class="header__nav-item">
                             <img src="assets/img/userimg/2.jpg" alt="" class="header__nav-btn">
                         </li>
@@ -61,36 +57,53 @@
 
             <!-- Sidebar -->
             <div class="app__sidebar">
-
+                    
                 <div class="sidebar__nav">
                     <ul class="sidebar__nav-list sidebar__nav-list--separate ">
                         <li class="sidebar__nav-item active">
-                            <a href="https://ramandeepsingh329.github.io/MyPortfolio/" class="sidebar__item-link">
+                            <a href="index.html" class="sidebar__item-link">
                                 <i class="bi bi-music-player"></i>
                                 <marquee><span>Developed By Ramandeep Singh</span></marquee>
                             </a>
                         </li>
-                      
-                        
                        
                     </ul>
                 </div>
                 <div class="sidebar__subnav hide-on-mobile">
                     <ul class="sidebar__nav-list">
                         <li class="sidebar__nav-item subnab--item">
-                            <a href="index.html" class="sidebar__item-link">
-                                <i class="bi bi-music-note-beamed"></i>
-                                <span>Latest Songs</span>
-                            </a>
+                            
                         </li>
-                       
                         <li class="sidebar__nav-item subnab--item">
-                            <a href="index.html" class="sidebar__item-link">
-                                <i class="bi bi-camera-video"></i>
-                                <span><marquee>Watch High Quality Video Songs</marquee></span>
-                            </a>
+                        </li>
+                        <li class="sidebar__nav-item subnab--item">
+                            
+                        </li>
+                        <li class="sidebar__nav-item subnab--item">
+                            
                         </li>
                     </ul>
+                   
+                    <ul class="sidebar__subnav-menu">
+                        <li class="sidebar__menu-item menu-header">
+                        </li>
+                        <li class="sidebar__menu-item">
+                        </li>
+                        <li class="sidebar__menu-item">
+                        </li>
+                        <li class="sidebar__menu-item">
+                        </li>
+                    </ul>
+                    <ul class="sidebar__nav-list hide-on-tablet-mobile">
+                        <li class="sidebar__nav-item">
+                           
+                        </li>
+                        <li class="sidebar__nav-item">
+                            
+                        </li>
+                        <li class="sidebar__nav-item">
+                            
+                        </li>
                     </ul>
                 </div>
                 <div class="sidebar__create-playlist">
@@ -118,12 +131,15 @@
                     <div class="app__header-container">
                         <div class="app__header-user">
                             <div class="app__user-avatar">
-                                <img src="assets/img/userimg/2.jpg" alt="" class="app__user-img">
+                                <img src="assets/img/logos/logo.gif" alt="" class="app__user-img">
                             </div>
                             <span class="app__user-name">Pulse Beat</span>
                         </div>
                         <div class="app__header-actions">
-                     </a>
+                                <div class="option__log-out">
+                                   
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -153,15 +169,14 @@
                             <div class="container__control row">
                                 <div class="col l-12 m-12 c-12 mb-10">
                                     <div class="container__header">
-                                        <a href="index.html" class="container__header-title">
+                                        <a href="indexi.html" class="container__header-title">
                                             <h3>Listen To Your Favourite Artists&nbsp;</h3>
                                             <i class="bi bi-chevron-right container__header-icon"></i>
                                         </a>
                                         <h3 class="container__header-subtitle">Songs</h3>
-                                            <button class="button is-small button-primary container__header-btn btn--play-all">
-                                                <i class="bi bi-play-fill container__header-icon"></i>
-                                                <span>Play All</span>
-                                            </button>
+                                        <div class="container__header-actions">
+                                            
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -170,57 +185,57 @@
                                         <div class="container__slide hide-on-mobile">
                                             <div class="container__slide-show">
                                                 <div class="container__slide-item first">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong2/song24.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
+                                                    <a href="Sidhu Moose Wala/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide11.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
                                                 <div class="container__slide-item second">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong2/song2.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
+                                                    <a href="Diljit Dosanjh/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide2.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
                                                 <div class="container__slide-item third">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong1/song24.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
+                                                    <a href="Jordan Sandhu/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide3.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
                                                  <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong3/song5.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                    <a href="Karan Aujla/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide4.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <a href="Dilpreet Dhillon/index.html">
+                                                    <div style="background: url('./assets/img/slides/silde5.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <a href="Tegi Pannu/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide6.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <a href="Pari Pandher/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide7.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <a href="Arjan Dhillon/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide8.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <a href="Gulab Sidhu/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide9.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <a href="Gurnam Bhullar/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide10.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <a href="Chani Nattan/index.html">
+                                                    <div style="background: url('./assets/img/slides/slide1.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                </div></a>
+                                                <div class="container__slide-item fourth">
+                                                    <div style="background: url('./assets/img/slides/slide12.jpg') no-repeat center center / cover" class="container__slide-img"></div>
                                                 </div>
                                                 <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong1/song25.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                    <div style="background: url('./assets/img/slides/slide15.jpg') no-repeat center center / cover" class="container__slide-img"></div>
                                                 </div>
                                                 <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong3/song10.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong2/song25.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong2/song12.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong1/song12.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong2/song11.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    
-                                                    <div style="background: url('./assets/img/music/listSong1/song6.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    <div style="background: url('./assets/img/music/listSong2/song26.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    <div style="background: url('./assets/img/music/listSong2/song5.jpg') no-repeat center center / cover" class="container__slide-img"></div>
-                                                </div>
-                                                <div class="container__slide-item fourth">
-                                                    <div style="background: url('./assets/img/music/listSong1/song2.jpg') no-repeat center center / cover" class="container__slide-img"></div>
+                                                    <div style="background: url('./assets/img/slides/slide14.jpg') no-repeat center center / cover" class="container__slide-img"></div>
                                                 </div>
                                                 
                                             </div>
@@ -262,8 +277,7 @@
                             <div class="container__section row mt-50">
                                 <div class="col l-12 m-12 c-12 mb-16">
                                     <div class="container__header">
-                                        <a href="#" class="container__header-title">
-                                        </a>
+
                                         <div class="container__header-actions hide-on-tablet-mobile">
                                             <div class="container__move-btn move-btn--album button--disabled">
                                             </div>
@@ -272,15 +286,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col l-12 m-12 c-12">
-                                    
-                                </div>
+
                             </div>
 
                             <!-- MV -->
                             <div class="container__section row mt-50">
                                 <div class="col l-12 m-12 c-12 mb-16">
                                     <div class="container__header">
+
+                                        <h3 class="container__header-subtitle">MV</h3>
                                         <div class="container__header-actions hide-on-tablet-mobile">
                                             <div class="container__move-btn move-btn--mv button--disabled">
                                             </div>
@@ -290,7 +304,7 @@
                                     </div>
                                 </div>
                                 <div class="col l-12 m-12 c-12">
-                                    
+                                    </div>
                                 </div>
                             </div>
 
@@ -298,7 +312,8 @@
                             <div class="container__section row mt-30">
                                 <div class="col l-12 m-12 c-12 mb-16">
                                     <div class="container__header">
-                                       
+                                     
+                                        <h3 class="container__header-subtitle">Listen To Your Favourite Artists</h3>
                                         <div class="container__header-actions hide-on-tablet-mobile">
                                             <div class="container__move-btn move-btn--artist button--disabled">
                                             </div>
@@ -308,7 +323,7 @@
                                     </div>
                                 </div>
                                 <div class="col l-12 m-12 c-12">
-                                    
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -803,17 +818,16 @@
                 <div class="player__popup">
                     <div class="player__popup-header">
                         <div class="player__popup-logo">
-                            <img src="./assets/img/userimg/2.jpg" alt="Logo" class="player__logo-img">
+                            <img src="./assets/img/logos/logo.gif"  alt="Logo" class="player__logo-img" >
                         </div>
                         <div class="player__popup-container">
-                               
-                               
-                               
+                            <ul class="player__popup-menu">
+                                
                             </ul>
                         </div>
                         <div class="player__popup-action">
                             <ul class="popup__action-menu">
-                                
+                              
                                 <li class="popup__action-btn btn--pop-down">
                                     <i class="bi bi-chevron-down popup__action-btn-icon"></i>
                                 </li>
@@ -890,8 +904,8 @@
                                 <div class="control-btn btn-next">
                                     <i class="bi bi-skip-end-fill"></i>
                                 </div>
-                                <div class="player__options-btn volume option-btn">
-                                    <i class="bi bi-volume-up btn--icon"></i>
+                                <div class="control-btn btn-repeat is-small is-medium">
+                                    <i class="bi bi-arrow-repeat"></i>
                                 </div>
                             </div>
                             <div class="progress-block">
@@ -906,10 +920,8 @@
                         <div class="player__options hide-on-mobile">
                             <div class="player__options-container">
                                 <div class="player__options-btn option-btn hide-on-tablet-mobile">
-                                    <i class="bi bi-camera-video btn--icon"></i>
                                 </div>
                                 <div class="player__options-btn option-btn hide-on-tablet-mobile">
-                                    <i class="bi bi-mic btn--icon"></i>
                                 </div>
                                 <div class="player__options-btn volume option-btn">
                                     <i class="bi bi-volume-up btn--icon"></i>
@@ -922,7 +934,6 @@
                                     <span class="volume__background"></span>
                                 </div>
                                 <div class="player__list-icon">
-                                    <i class="bi bi-music-note-list"></i>
                                 </div>
                             </div>
                         </div>
