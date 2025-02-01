@@ -383,6 +383,12 @@ var listSong = [
             image: "./assets/img/music/listSong3/song16.jpg"
         },
         {
+            name: "Dua Saware",
+            singer: ["Saleem Merchant Ft Neeti Mohan"],
+            path: "./assets/music/listSong3/song23.mp3",
+            image: "./assets/img/music/listSong3/song17.jpg"
+        },
+        {
             name: "Winning Speech",
             singer: ["Karan Aujla"],
             path: "./assets/music/listSong3/song12.mp3",
