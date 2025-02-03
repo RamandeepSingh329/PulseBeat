@@ -9,10 +9,22 @@ var listSong = [
             image: "./assets/img/music/listSong1/song29.jpg"
         },
         {
+            name: "Mera Mann",
+            singer: ["Juss"],
+            path: "./assets/music/listSong1/song39.mp3",
+            image: "./assets/img/music/listSong1/song37.jpg"
+        },
+        {
             name: "God Damn",
             singer: ["Karan Aujla Ft Badshah"],
             path: "./assets/music/listSong1/song36.mp3",
             image: "./assets/img/music/listSong1/song35.jpg"
+        },
+        {
+            name: "Hu Jattiye",
+            singer: ["Dilpreet Dhillon Ft Gur Sidhu"],
+            path: "./assets/music/listSong1/song38.mp3",
+            image: "./assets/img/music/listSong1/song38.jpg"
         },
         {
             name: "Stick Talk",
