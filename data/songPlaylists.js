@@ -9,6 +9,18 @@ var listSong = [
             image: "./assets/img/music/listSong1/song29.jpg"
         },
         {
+            name: "Tension",
+            singer: ["Diljit Dosanjh"],
+            path: "./assets/music/listSong1/song40.mp3",
+            image: "./assets/img/music/listSong1/song39.jpg"
+        },
+        {
+            name: "Kohinoor",
+            singer: ["Kulwinder Billa"],
+            path: "./assets/music/listSong1/song42.mp3",
+            image: "./assets/img/music/listSong1/song41.jpg"
+        },
+        {
             name: "Mera Mann",
             singer: ["Juss"],
             path: "./assets/music/listSong1/song39.mp3",
@@ -19,6 +31,12 @@ var listSong = [
             singer: ["Karan Aujla Ft Badshah"],
             path: "./assets/music/listSong1/song36.mp3",
             image: "./assets/img/music/listSong1/song35.jpg"
+        },
+        {
+            name: "Duldi Sharaab",
+            singer: ["Kulwinder Billa Ft Mehar Vaani"],
+            path: "./assets/music/listSong1/song41.mp3",
+            image: "./assets/img/music/listSong1/song40.jpg"
         },
         {
             name: "Hu Jattiye",
