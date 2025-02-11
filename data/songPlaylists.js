@@ -9,10 +9,22 @@ var listSong = [
             image: "./assets/img/music/listSong1/song29.jpg"
         },
         {
+            name: "Neend",
+            singer: ["Navjit"],
+            path: "./assets/music/listSong1/song45.mp3",
+            image: "./assets/img/music/listSong1/song44.jpg"
+        },
+        {
             name: "Tension",
             singer: ["Diljit Dosanjh"],
             path: "./assets/music/listSong1/song40.mp3",
             image: "./assets/img/music/listSong1/song39.jpg"
+        },
+        {
+            name: "Kali Ainak",
+            singer: ["Malkit Singh"],
+            path: "./assets/music/listSong1/song43.mp3",
+            image: "./assets/img/music/listSong1/song43.jpg"
         },
         {
             name: "Kohinoor",
@@ -37,6 +49,12 @@ var listSong = [
             singer: ["Kulwinder Billa Ft Mehar Vaani"],
             path: "./assets/music/listSong1/song41.mp3",
             image: "./assets/img/music/listSong1/song40.jpg"
+        },
+        {
+            name: "5 PM",
+            singer: ["Inder Pandoori"],
+            path: "./assets/music/listSong1/song44.mp3",
+            image: "./assets/img/music/listSong1/song42.jpg"
         },
         {
             name: "Hu Jattiye",
