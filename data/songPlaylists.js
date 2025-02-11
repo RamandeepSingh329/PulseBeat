@@ -9,6 +9,13 @@ var listSong = [
             image: "./assets/img/music/listSong1/song29.jpg"
         },
         {
+            name: "Filmy Scene",
+            singer: ["Korala Maan Ft Gurlez Akhtar"],
+            path: "./assets/music/listSong1/song46.mp3",
+            image: "./assets/img/music/listSong1/song45.jpg"
+        },
+
+        {
             name: "Neend",
             singer: ["Navjit"],
             path: "./assets/music/listSong1/song45.mp3",
@@ -27,8 +34,8 @@ var listSong = [
             image: "./assets/img/music/listSong1/song43.jpg"
         },
         {
-            name: "Kohinoor",
-            singer: ["Kulwinder Billa"],
+            name: "Wanted",
+            singer: ["Korala Maan Ft Ninja"],
             path: "./assets/music/listSong1/song42.mp3",
             image: "./assets/img/music/listSong1/song41.jpg"
         },
@@ -129,14 +136,14 @@ var listSong = [
             image: "./assets/img/music/listSong1/song24.jpg"
         },
         {
-            name: "Ammi",
-            singer: ["Kamal Khan"],
+            name: "Barood Dil",
+            singer: ["Korala Maan Ft Gurlez Akhtar"],
             path: "./assets/music/listSong1/song30.mp3",
             image: "./assets/img/music/listSong1/song28.jpg"
         },
         {
-            name: "Gora Rang",
-            singer: ["Sabba Ft Jasmeen Akhtar"],
+            name: "Facetime",
+            singer: ["Inderpal Moga Ft Miss Pooja"],
             path: "./assets/music/listSong1/song1.mp3",
             image: "./assets/img/music/listSong1/song1.jpg"
         },
@@ -168,7 +175,7 @@ var listSong = [
             name: "Pre Workout",
             singer: ["Jordan Sandhu"],
             path: "./assets/music/listSong1/song5.mp3",
-            image: "./assets/img/music/listSong1/song5.jpg"
+            image: "./assets/img/music/listSong1/song46.jpg"
         },
         {
             name: "Sorry",
@@ -177,8 +184,8 @@ var listSong = [
             image: "./assets/img/music/listSong1/song6.jpg"
         },
         {
-            name: "Mirrors",
-            singer: ["Jordan Sandhu"],
+            name: "Gang Boliyan",
+            singer: ["Inderpal Moga Ft Chani Nattan"],
             path: "./assets/music/listSong1/song7.mp3",
             image: "./assets/img/music/listSong1/song5.jpg"
         },
