@@ -14,7 +14,6 @@ var listSong = [
             path: "./assets/music/listSong1/song46.mp3",
             image: "./assets/img/music/listSong1/song45.jpg"
         },
-
         {
             name: "Neend",
             singer: ["Navjit"],
@@ -220,7 +219,6 @@ var listSong = [
             path: "./assets/music/listSong1/song14.mp3",
             image: "./assets/img/music/listSong1/song14.jpg"
         },
-       
         {
             name: "The King",
             singer: ["Amrit Maan"],
@@ -538,20 +536,20 @@ var listSong = [
     ],
     [
         {
-            name: "Tera Yaar Bolda",
-            singer: ["Surjit Bindhrakhia"],
+            name: "Been",
+            singer: ["Kaka WRLD Ft Renuka Panwaer"],
             path: "./assets/music/listSong4/song1.mp3",
             image: "./assets/img/music/listSong4/song1.jpg"
         },
         {
-            name: "Mitran Da Naa Chalda",
-            singer: ["Harjit Harman"],
+            name: "Birthday",
+            singer: ["Kaka WRLD Ft Renuka Panwar"],
             path: "./assets/music/listSong4/song2.mp3",
             image: "./assets/img/music/listSong4/song2.jpg"
         },
         {
-            name: "Dhol Jangero Da",
-            singer: ["Master Slaeem"],
+            name: "Naach Basanti",
+            singer: ["Semicolon Ft Aarju Dhillon"],
             path: "./assets/music/listSong4/song3.mp3",
             image: "./assets/img/music/listSong4/song3.jpg"
         },
