@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/img/logos/logo.gif" type="image/x-icon" />
+    <title>Pulse Beat - Feel Every Beat Of Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <style>
+        /* Additional styles for search results */
+        #results {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none; /* Initially hidden */
+        }
+        .result-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .result-item:hover {
+            background: #f0f0f0;
+        }
+    </style>
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="app grid" style="background-image: none">
+        <!-- Header -->
+        <header class="header grid">
+            <div class="header__with-search">
+                <div class="header__search">
+                    <input type="text" id="search-input" placeholder="Search for songs or artists..." class="header__search-input">
+                    <div class="header__search-btn">
+                        <i class="bi bi-search header__search-icon"></i>
+                    </div>
+                    <div id="results" class="header__search-history">
+                        <ul class="header__search-list"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <img src="assets/img/userimg/2.jpg" alt="" class="header__nav-btn">Ramandeep Singh
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <div class="app__sidebar">
+            <div class="sidebar__nav">
+                <ul class="sidebar__nav-list sidebar__nav-list--separate ">
+                    <li class="sidebar__nav-item active">
+                        <a href="https://ramandeepsingh329.github.io/MyPortfolio/" class="sidebar__item-link">
+                            <i class="bi bi-music-player"></i>
+                            <marquee><span>Developed By Ramandeep Singh</span></marquee>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="app__container tab--personal active">
+            <div class="content">
+                <div class="content__container">
+                    <div class="grid container__tab tab-home active">
+                        <div class="container__section row">
+                            <div class="col l-12 m-12 c-12">
+                                <div class="container__header mb-10">
+                                    <a href="#" class="container__header-title">
+                                        <h3>Songs&nbsp;</h3>
+                                    </a>
+                                    <h3 class="container__header-subtitle">Songs</h3>
+                                </div>
+                            </div>
+                            <div class="col l-12 m-12 c-12">
+                                <div class="playlist__list mb-30 overflow-visible">
+                                    <!-- Songs will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player -->
+        <div class="player grid">
+            <div class="player__container">
+                <audio id="audio" src=""></audio>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample song data
+        var listSong = [
+            [
+                {
+                    name: "Selfmade",
+                    singer: ["Sidhu Moose Wala"],
+                    path: "./assets/music/listSong1/song28.mp3",
+                    image: "./assets/img/music/listSong1/song29.jpg"
+                },
+                {
+                    name: "Filmy Scene",
+                    singer: ["Korala Maan Ft Gurlez Akhtar"],
+                    path: "./assets/music/listSong1/song46.mp3",
+                    image: "./assets/img/music/listSong1/song45.jpg"
+                },
+                {
+                    name: "Neend",
+                    singer: ["Navjit"],
+                    path: "./assets/music/listSong1/song45.mp3",
+                    image: "./assets/img/music/listSong1/song44.jpg"
+                },
+                // Add more songs as needed
+            ]
+        ];
+
+        // Store the songs in local storage
+        const MUSIC_STORAGE_KEY = 'VIK_MUSIC';
+        localStorage.setItem(MUSIC_STORAGE_KEY, JSON.stringify(listSong));
+
+        // Retrieve the songs from local storage
+        const storedSongs = JSON.parse(localStorage.getItem(MUSIC_STORAGE_KEY));
+
+        // Function to filter songs based on search input
+        function filterSongs(query) {
+            const filteredSongs = [];
+
+            storedSongs.forEach(playlist => {
+                const filteredPlaylist = playlist.filter(song => 
+                    song.name.toLowerCase().includes(query.toLowerCase()) || 
+                    song.singer.some(singer => singer.toLowerCase().includes(query.toLowerCase()))
+                );
+
+                if (filteredPlaylist.length > 0) {
+                    filteredSongs.push(...filteredPlaylist);
+                }
+            });
+
+            return filteredSongs;
+        }
+
+        // Function to display search results
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('results');
+            const resultsList = resultsDiv.querySelector('.header__search-list');
+            resultsList.innerHTML = ''; // Clear previous results
+
+            if (results.length === 0) {
+                resultsDiv.style.display = 'none'; // Hide if no results
+                return;
+            }
+
+            results.forEach(song => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('result-item');
+                listItem.textContent = `${song.name} - ${song.singer.join(', ')}`;
+                listItem.onclick = () => {
+                    // Play the song or perform any action
+                    document.getElementById('audio').src = song.path;
+                    document.getElementById('audio').play();
+                };
+                resultsList.appendChild(listItem);
+            });
+
+            resultsDiv.style.display = 'block'; // Show results
+        }
+
+        // Event listener for the search input
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', (event) => {
+            const query = event.target.value.trim();
+            const filteredSongs = filterSongs(query);
+            displayResults(filteredSongs);
+        });
+    </script>
+            <script src="./data/themes.js"></script>
+            <script src="./data/listThemes.js"></script>
+            <script src="./data/songPlaylists.js"></script>
+            <script src="./data/playlists.js"></script>
+            <script src="./data/albums.js"></script>
+            <script src="./data/mvs.js"></script>
+            <script src="./data/artists.js"></script>
+            <script src="./data/tabExplore/exploreSlides.js"></script>
+            <script src="./data/tabExplore/radios.js"></script>
+            <script src="./data/tabExplore/labels.js"></script>
+            <script src="./data/tabExplore/singerSlides.js"></script>
+            <script src="./data/tabExplore/events.js"></script>
+            <script src="./data/tabExplore/newPlaylists.js"></script>
+            <script src="./data/tabExplore/favArtists.js"></script>
+            <script src="./data/tabExplore/brands.js"></script>
+            <script src="./data/specialPlaylists.js"></script>
+            <script src="./data/normalPlaylists.js"></script>
+            <script src="./data/tabCharts/playlistCharts.js"></script>
+            <script src="./data/tabFollowing/posts.js"></script>
+            <script src="./toast.js"></script>
+            <script src="./main.js"></script>
+    
+</body>
+</html>
