@@ -39,8 +39,8 @@ var listSong = [
             image: "./assets/img/music/listSong1/song41.jpg"
         },
         {
-            name: "Mera Mann",
-            singer: ["Juss"],
+            name: "Shehar Patia",
+            singer: ["Karan Randhawa Ft Gurlez Akhtar"],
             path: "./assets/music/listSong1/song39.mp3",
             image: "./assets/img/music/listSong1/song37.jpg"
         },
