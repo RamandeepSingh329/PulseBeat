@@ -15,26 +15,26 @@ var listSong = [
             image: "./assets/img/music/listSong1/song45.jpg"
         },
         {
-            name: "Neend",
-            singer: ["Navjit"],
+            name: "Crazy In Love ",
+            singer: ["Inderpal Moga Ft Chani Nattan"],
             path: "./assets/music/listSong1/song45.mp3",
             image: "./assets/img/music/listSong1/song44.jpg"
         },
         {
-            name: "Tension",
-            singer: ["Diljit Dosanjh"],
+            name: "Gears",
+            singer: ["Arjan Dhillon"],
             path: "./assets/music/listSong1/song40.mp3",
             image: "./assets/img/music/listSong1/song39.jpg"
         },
         {
-            name: "Kali Ainak",
-            singer: ["Malkit Singh"],
+            name: "Gangsta Luv",
+            singer: ["Inderpal Moga Ft Harkirat Sangha & Chani Nattan"],
             path: "./assets/music/listSong1/song43.mp3",
             image: "./assets/img/music/listSong1/song43.jpg"
         },
         {
             name: "Wanted",
-            singer: ["Korala Maan Ft Ninja"],
+            singer: ["Ninja Ft Jai Randhawa"],
             path: "./assets/music/listSong1/song42.mp3",
             image: "./assets/img/music/listSong1/song41.jpg"
         },
