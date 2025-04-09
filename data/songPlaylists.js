@@ -33,7 +33,7 @@ var listSong = [
             image: "./assets/img/music/listSong1/song43.jpg"
         },
         {
-            name: "Wanted",
+            name: "Fire",
             singer: ["Ninja Ft Jai Randhawa"],
             path: "./assets/music/listSong1/song42.mp3",
             image: "./assets/img/music/listSong1/song41.jpg"
