@@ -19,8 +19,71 @@
     flex-direction: column;
     background-color: var(--sidebar-bg);
     -webkit-tap-highlight-color: transparent;
+    position: relative; /* For positioning child elements */
+    transition: transform 0.3s ease; /* Smooth transition for sliding effect */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Animation for sidebar opening */
+.app__sidebar.open {
+    transform: translateX(0); /* Slide in */
+}
+
+.app__sidebar.closed {
+    transform: translateX(-100%); /* Slide out */
+}
+
+/* Sidebar item hover effect */
+.sidebar__nav-item {
+    position: relative; /* For pseudo-element positioning */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sidebar__nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Adding a pseudo-element for a sliding effect on hover */
+.sidebar__nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px; /* Width of the sliding effect */
+    background-color: var(--purple-primary); /* Color of the sliding effect */
+    transform: scaleY(0); /* Initially hidden */
+    transition: transform 0.3s ease; /* Smooth transition for sliding effect */
+}
+
+.sidebar__nav-item:hover::before {
+    transform: scaleY(1); /* Slide in on hover */
+}
+
+/* Animation for sidebar items */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px); /* Slide in from above */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Original position */
+    }
+}
+
+/* Apply animation to sidebar items */
+.sidebar__nav-item {
+    animation: fadeIn 0.5s ease forwards; /* Fade in effect */
+}
+
+/* Delay for each item to create a staggered effect */
+.sidebar__nav-item:nth-child(1) { animation-delay: 0.1s; }
+.sidebar__nav-item:nth-child(2) { animation-delay: 0.2s; }
+.sidebar__nav-item:nth-child(3) { animation-delay: 0.3s; }
+.sidebar__nav-item:nth-child(4) { animation-delay: 0.4s; }
+.sidebar__nav-item:nth-child(5) { animation-delay: 0.5s; }
 .sidebar__nav {
     display: block;
     width: 100%;
@@ -336,17 +399,53 @@
     left: 0;
     right: 0;
     height: 100%;
-    display: none;
-    scroll-behavior: smooth;
+    display: none; /* Initially hidden */
+    scroll-behavior: smooth; /* Will be overridden later, but kept for potential dynamic enabling */
     overflow: hidden overlay;
-    will-change: scroll-position;
+    will-change: scroll-position, opacity, transform; /* Add properties for animation */
     overflow-anchor: none !important;
     scroll-snap-stop: normal !important;
-    scroll-behavior: unset !important;
+    scroll-behavior: unset !important; /* Overrides smooth for default behavior */
     overscroll-behavior: unset !important;
-}
+    opacity: 0; /* Initially transparent for fade-in */
+    transform: translateY(20px); /* Start slightly below for slide-in */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Define transitions */
+  }
+  
+  /* Class to trigger the appearance animation */
+  .app__container.active {
+    display: block; /* Make it visible */
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Example of a subtle pulsating animation (can be applied conditionally) */
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Example of a subtle background color animation (can be applied conditionally) */
+  @keyframes backgroundColorChange {
+    0% {
+      background-color: #f0f0f0;
+    }
+    100% {
+      background-color: #e0e0e0;
+    }
+  }
 
-.app__container.active {
+  .app__container.active {
     display: block;
 }
 
@@ -767,16 +866,57 @@
     width: 95px;
     height: 95px;
     border-radius: 50%;
-}
-
-.app__user-name {
+    animation: breathe 1.5s ease-in-out infinite alternate; /* Apply the breathing animation */
+  }
+  
+  @keyframes breathe {
+    0% {
+      transform: scale(1);
+      opacity: 0.9; /* Slightly reduce opacity at the base */
+    }
+    50% {
+      transform: scale(1.05); /* Slightly scale up */
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.9; /* Return to the base state */
+    }
+  }
+  .app__user-name {
     font-size: 3.2rem;
     font-weight: 700;
     line-height: 3.8rem;
     margin: 10px 0 5px;
-    color: var(--text-color)
-}
-
+    color: var(--text-color);
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Added color to transition */
+    animation: breatheColor 2.5s ease-in-out infinite alternate; /* Apply combined animation */
+  }
+  
+  .app__user-name:hover {
+    color: var(--highlight-color); /* Change color on hover */
+    text-shadow: 0 0 5px var(--highlight-color); /* Add a subtle glow on hover */
+    transform: scale(1.03); /* Slight scale up on hover */
+  }
+  
+  @keyframes breatheColor {
+    0% {
+      transform: scale(1);
+      color: var(--text-color);
+      text-shadow: none;
+    }
+    50% {
+      transform: scale(1.04); /* Slight scale up */
+      color: var(--accent-color); /* Change color at the peak */
+      text-shadow: 0 0 8px var(--accent-color); /* Add a glow with the accent color */
+    }
+    100% {
+      transform: scale(1);
+      color: var(--text-color);
+      text-shadow: none;
+    }
+  }
+  
 .app__header-actions {
     position: absolute;
     right: 30px;
@@ -1059,8 +1199,35 @@ label .container__header-icon {
     height: 244px;
     display: flex;
     margin-bottom: 25px;
+    background-color: ; /* Light gray background */
+    border: 1px solid ;    /* Light gray border */
+    border-radius: 8px;        /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
 }
 
+/* Hover effect */
+.container__playmusic:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Keyframe animation for initial load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly lower */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+/* Apply the animation */
+.container__playmusic {
+    animation: fadeIn 0.5s ease forwards; /* Fade in effect on load */
+}
 
 /* Content Slider */
 .container__slide {
@@ -1397,29 +1564,6 @@ label .container__header-icon {
 }
 
 
-.album__create-icon {
-    width: 47px;
-    height: 47px;
-    margin-bottom: 15px;
-    font-size: 3.9rem;
-    font-weight: 100;
-    line-height: 4.7rem;
-    text-align: center;
-    color: var(--text-color);
-    -webkit-text-stroke: 2px #992392;
-}
-
-.album__create-annotate {
-    font-size: 1.4rem;
-    line-height: 2.1rem;
-    color: var(--text-color);
-}
-
-.album__section-playlist {
-    position: relative;
-}
-
-
 
 /* Footer CSS */
 .player {
@@ -1443,13 +1587,131 @@ label .container__header-icon {
     height: var(--player-height);
     justify-content: space-between;
     background-color: var(--player-bg);
-}
-
+    transform-origin: 50% 50%; /* Center origin for scaling */
+    animation: smoothBreatheColorShadow 3.5s cubic-bezier(0.7, 0, 0.3, 1) infinite alternate; /* Smoother easing, longer duration */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); /* Initial subtle shadow */
+    transition: background-color 0.5s ease-in-out; /* Smooth background color transitions */
+  }
+  
+  .player__container:hover {
+    background-color: var(--player-bg-hover); /* Define a hover background color variable */
+  }
+  
+  @keyframes smoothBreatheColorShadow {
+    0% {
+      transform: scale(1);
+      opacity: 0.95; /* Even more subtle dimming */
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      background-color: var(--player-bg); /* Start with the default background */
+    }
+    25% {
+      transform: scale(1.005); /* Very gentle initial scale */
+      opacity: 0.98;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      background-color: color-mix(in srgb, var(--player-bg) 30%, var(--player-bg-peak)); /* Gentle color mix */
+    }
+    50% {
+      transform: scale(1.02); /* Gentle peak "inhale" */
+      opacity: 1;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+      background-color: var(--player-bg-peak); /* Peak background color */
+    }
+    75% {
+      transform: scale(1.005);
+      opacity: 0.98;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      background-color: color-mix(in srgb, var(--player-bg) 30%, var(--player-bg-peak)); /* Gentle color mix back */
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.95;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      background-color: var(--player-bg); /* Return to default background */
+    }
+  }  
+/* Updated CSS for .player__container-song adjusting colors to player */
 .player__container-song {
     width: 30%;
     display: flex;
-}
-
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--player-bg) 80%, black), var(--player-accent)); /* Gradient based on player colors */
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .player__container-song:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Animated Inner Glow (using player accent color) */
+  .player__container-song::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, color-mix(in srgb, var(--player-accent) 60%, transparent) 20%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+  }
+  
+  .player__container-song:hover::before {
+    opacity: 1;
+  }
+  
+  /* Subtle Holographic Effect (using player background and accent) */
+  .player__container-song::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 15%, color-mix(in srgb, var(--player-bg) 40%, white) 25%, color-mix(in srgb, var(--player-accent) 40%, white) 35%, transparent 45%,
+                        transparent 55%, color-mix(in srgb, var(--player-accent) 40%, white) 65%, color-mix(in srgb, var(--player-bg) 40%, white) 75%, transparent 85%);
+    background-size: 300% 300%;
+    opacity: 0;
+    animation: holographicGlitter 5s linear infinite;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+  }
+  
+  .player__container-song:hover::after {
+    opacity: 0.6;
+  }
+  
+  @keyframes holographicGlitter {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+  }
+  
+  /* Optional: Animated Border Wave (using player accent color) */
+  @keyframes borderWavePlayer {
+    0% { border-color: var(--player-accent); transform: translateX(0); }
+    50% { border-color: color-mix(in srgb, var(--player-accent) 60%, white); transform: translateX(5px); }
+    100% { border-color: var(--player-accent); transform: translateX(0); }
+  }
+  
+  .player__container-song.wave-border {
+    border: 2px solid transparent;
+    animation: borderWavePlayer 3s ease-in-out infinite alternate;
+  }
+  
+  /* Optional: Subtle "Pulse" Animation (using player background as base) */
+  @keyframes subtlePulseSongPlayer {
+    0% { transform: scale(1); background-color: var(--player-bg); }
+    50% { transform: scale(1.01); background-color: color-mix(in srgb, var(--player-bg) 80%, var(--player-accent)); }
+    100% { transform: scale(1); background-color: var(--player-bg); }
+  }
+  
+  .player__container-song.pulse {
+    animation: subtlePulseSongPlayer 2.5s ease-in-out infinite;
+  }
 .player__song-info {
     width: unset;
     flex-basis: auto;
@@ -1593,14 +1855,44 @@ label .container__header-icon {
     flex: 1;
     overflow: hidden;
     color: var(--text-color);
-}
-
-.player__song-body::after {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle initial shadow */
+    transition: text-shadow 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    /* Potentially add a very subtle background */
+    /* background-color: rgba(255, 255, 255, 0.02); */
+  }
+  
+  .player__song-body:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* More pronounced on hover */
+    color: var(--highlight-color); /* Change color on hover */
+    background-color: rgba(0, 188, 212, 0.05); /* Subtle highlight color on hover */
+  }
+  
+  .player__song-body a {
+    color: inherit; /* Inherit color from .player__song-body */
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .player__song-body a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 1px;
+    background-color: var(--highlight-color);
+    transition: width 0.2s ease-in-out;
+  }
+  
+  .player__song-body a:hover::after {
+    width: 100%;
+  }
+  
+  .player__song-body::after {
     content: "";
     display: block;
     height: 100%;
-}
-
+  }
 .player__song-title {
     height: 19px;
     display:flex;
@@ -1658,7 +1950,7 @@ label .container__header-icon {
 
 
   /* CONTROL */
-.player__control {
+  .player__control {
     flex: 1;
     height: 73px;
     width: 40%;
@@ -1666,58 +1958,222 @@ label .container__header-icon {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
+    perspective: 200px; /* Enable 3D transformations */
+    transition: transform 0.3s ease-out, filter 0.3s ease-out, background-color 0.3s ease-in-out; /* Added background-color */
+    background: linear-gradient(160deg, color-mix(in srgb, var(--player-bg) 70%, black), color-mix(in srgb, var(--player-accent) 70%, black));
+    background-size: 200% 200%;
+    animation: animatedControlGradientPlayer 10s ease infinite alternate;
+    border-radius: 8px; /* Optional rounded corners */
+    overflow: hidden; /* Clip inner animations */
+  }
+  
+  .player__control:hover {
+    transform: translateY(-3px) rotateX(5deg); /* Subtle lift and tilt */
+    filter: brightness(1.1); /* Slightly brighten */
+    background-color: color-mix(in srgb, var(--player-accent) 20%, var(--player-bg)); /* Subtle color shift on hover */
+  }
+  
+  @keyframes animatedControlGradientPlayer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  
+  /* Animated "Focus" Effect on Child Controls (Example for buttons inside) */
+  .player__control button {
+    /* Basic button styles */
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: color-mix(in srgb, var(--player-bg) 80%, black);
+    color: var(--text-color);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Added background-color */
+  }
+  
+  .player__control button:focus {
+    outline: none;
+    animation: pulseFocusPlayer 1.5s ease-out infinite alternate;
+    box-shadow: 0 0 10px var(--player-accent);
+    background-color: color-mix(in srgb, var(--player-accent) 30%, black);
+  }
+  
+  @keyframes pulseFocusPlayer {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+  }
+  
+  /* Subtle "Breathing" Scale for the Control Container */
+  @keyframes breatheControlPlayer {
+    0% { transform: scale(1) translateY(0); background-color: var(--player-bg); }
+    50% { transform: scale(1.01) translateY(-1px); background-color: color-mix(in srgb, var(--player-accent) 10%, var(--player-bg)); }
+    100% { transform: scale(1) translateY(0); background-color: var(--player-bg); }
+  }
+  
+  .player__control.breathe {
+    animation: breatheControlPlayer 5s ease-in-out infinite alternate;
+  }
+  
+  /* Example of applying a "wave" animation to a background overlay */
+  .player__control::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: color-mix(in srgb, var(--player-accent) 20%, transparent);
+    opacity: 0;
+    animation: waveOverlayPlayer 4s linear infinite alternate;
+    pointer-events: none;
+  }
+  
+  .player__control:hover::before {
+    opacity: 0.6;
+  }
+  
+  @keyframes waveOverlayPlayer {
+    0% { transform: translateY(-5px); }
+    100% { transform: translateY(5px); }
+  }
+/* Styling for the control buttons container */
 .player__control-btn {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.player__control-btn .btn-toggle-play {
+    /* Advanced Visuals: Glassmorphism and Subtle Animation */
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Clip potential inner effects */
+    animation: subtleSlideIn 0.5s ease-out;
+  }
+  
+  @keyframes subtleSlideIn {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* Styling for the toggle play button container */
+  .player__control-btn .btn-toggle-play {
     padding: 3px 7px;
-}
-
-.btn-toggle-play {
+  }
+  
+  /* Styling for the main toggle play button */
+  .btn-toggle-play {
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.btn-toggle-play i {
+    /* Advanced Visuals: Animated Gradient Border */
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .btn-toggle-play::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(45deg, var(--highlight-color), transparent, var(--accent-color), transparent);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: animatedBorder 3s linear infinite;
+  }
+  
+  @keyframes animatedBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .btn-toggle-play:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-toggle-play:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Styling for the play/pause icon */
+  .btn-toggle-play i {
     padding: 5px;
     border-radius: 50%;
     border: 1px solid var(--text-color);
-}
-
-.btn-toggle-play .icon-play:before {
+    color: var(--text-color);
+    /* Advanced Visuals: Icon Bounce Animation */
+    animation: iconBounce 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  }
+  
+  @keyframes iconBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  .btn-toggle-play:hover i {
+    animation-play-state: paused;
+  }
+  
+  /* Adjusting play icon position */
+  .btn-toggle-play .icon-play:before {
     transform: translateX(1px);
-}
-
-.player__control .btn-repeat,
-.player__control .btn-random,
-.player__control .btn-next,
-.player__control .btn-prev {
+  }
+  
+  /* Styling for repeat, random, next, prev buttons */
+  .player__control .btn-repeat,
+  .player__control .btn-random,
+  .player__control .btn-next,
+  .player__control .btn-prev {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.player__control .control-btn.active {
-    color: var(--link-text-hover);
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   }
-
-.player__control .btn-repeat:active,
-.player__control .btn-random:active,
-.player__control .btn-next:active,
-.player__control .btn-prev:active {
+  
+  .player__control .btn-repeat:hover,
+  .player__control .btn-random:hover,
+  .player__control .btn-next:hover,
+  .player__control .btn-prev:hover {
+    transform: translateY(-3px) scale(1.1);
+    opacity: 1;
+  }
+  
+  .player__control .control-btn.active {
+    color: var(--link-text-hover);
+    /* Advanced Visuals: Pulsating Glow */
+    animation: glowActive 1.5s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glowActive {
+    0% { text-shadow: 0 0 5px var(--link-text-hover); }
+    100% { text-shadow: 0 0 15px var(--link-text-hover); }
+  }
+  
+  .player__control .btn-repeat:active,
+  .player__control .btn-random:active,
+  .player__control .btn-next:active,
+  .player__control .btn-prev:active {
     background-color: var(--bg-content-color);
-}
-
-.progress-block {
+    transform: scale(0.9);
+  }
+  
+  /* Styling for the progress block */
+  .progress-block {
     height: 18px;
     width: 100%;
     display: flex;
@@ -1725,58 +2181,75 @@ label .container__header-icon {
     position: relative;
     align-items: center;
     justify-content: space-between;
-}
-
-.progress__track {
+    /* Advanced Visuals: Subtle 3D Perspective */
+    perspective: 200px;
+  }
+  
+  /* Styling for the progress track (background) */
+  .progress__track {
     left: 50%;
-    height: 3px;
+    height: 4px;
     border-radius: 20px;
     position: absolute;
-    transform: translate(-50%, 0);
-    background: var(--bg-content-color);
-}
-
-.progress__track.song--track {
+    transform: translate(-50%, 0) rotateX(5deg);
+    background: linear-gradient(to right, var(--bg-content-color), rgba(255, 255, 255, 0.2), var(--bg-content-color));
+    transition: height 0.15s ease-in-out, border-radius 0.15s ease-in-out;
+  }
+  
+  .progress-block:hover ~ .progress__track {
+    height: 6px;
+    border-radius: 100px;
+  }
+  
+  .progress__track.song--track {
     width: calc(100% - 130px);
-}
-
-.progress__track-update {
+  }
+  
+  /* Styling for the progress track update (foreground) */
+  .progress__track-update {
     top: 0;
     left: 0;
     width: 0;
-    height: 3px;
+    height: 4px;
     border-radius: 20px;
     position: absolute;
     background-color: var(--text-item-hover);
-}
-
-.progress__track-update::after {
+    /* Advanced Visuals: Animated Width */
+    transition: height 0.15s ease-in-out, border-radius 0.15s ease-in-out, width 0.3s ease-out;
+  }
+  
+  .progress-block:hover ~ .progress__track .progress__track-update {
+    height: 6px;
+    border-radius: 100px;
+  }
+  
+  /* Styling for the progress track update knob */
+  .progress__track-update::after {
     content: "";
-    top: 49.9%;
+    top: 50%;
     right: 0;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     display: none;
     border-radius: 50%;
     position: absolute;
-    transform: translate(50%, -50%);
+    transform: translate(50%, -50%) scale(1);
     background-color: var(--text-item-hover);
-}
-
-.progress:hover ~ .progress__track {
-    height: 5px;
-    border-radius: 100px;
-}
-
-.progress:hover ~ .progress__track .progress__track-update {
-    height: 5px;
-    border-radius: 100px;
-}
-
-.progress:hover ~ .progress__track .progress__track-update::after {
+    box-shadow: 0 2px 6px var(--text-item-hover);
+    /* Advanced Visuals: Pulsating Knob */
+    animation: pulseKnob 1.8s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulseKnob {
+    0% { transform: translate(50%, -50%) scale(1); }
+    100% { transform: translate(50%, -50%) scale(1.15); }
+  }
+  
+  .progress-block:hover ~ .progress__track .progress__track-update::after {
     display: block;
-}
-
+  }
+  
+  /* Styling for duration and track time */
   .durationtime,
   .tracktime {
     width: 55px;
@@ -1785,10 +2258,16 @@ label .container__header-icon {
     font-size: 1.2rem;
     text-align: center;
     color: var(--text-color);
-}
-
+    /* Advanced Visuals: Subtle Fade-In */
+    opacity: 0.8;
+    animation: fadeInTime 0.3s ease-out forwards;
+  }
   
-.progress {
+  @keyframes fadeInTime {
+    0% { opacity: 0; transform: translateY(5px); }
+    100% { opacity: 0.8; transform: translateY(0); }
+  }
+  .progress {
     flex: 1;
     opacity: 1;
     z-index: 5;
@@ -1796,26 +2275,95 @@ label .container__header-icon {
     outline: none;
     cursor: pointer;
     border-radius: 2px;
-    will-change: opacity;
+    will-change: opacity, transform, box-shadow; /* Add transform and box-shadow */
     -webkit-appearance: none;
     -webkit-transition: 0.2s;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     background-color: transparent;
     -webkit-tap-highlight-color: transparent;
-}
-
-
+    /* Advanced Visuals: Subtle 3D Depth and Glow */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    perspective: 150px; /* Increased perspective */
+    transform-origin: center center; /* Center origin for breathing */
+    animation: breatheProgress 3s ease-in-out infinite alternate; /* Breathing animation */
+  }
   
-.progress::-webkit-slider-thumb {
+  @keyframes breatheProgress {
+    0% { transform: translateY(0) scale(1) rotateX(0); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.05); }
+    50% { transform: translateY(-1px) scale(1.01) rotateX(2deg); box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15), inset 0 1px 3px rgba(0, 0, 0, 0.08); }
+    100% { transform: translateY(0) scale(1) rotateX(0); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.05); }
+  }
+  
+  .progress:hover {
+    opacity: 0.95;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    animation-play-state: paused; /* Stop breathing on hover */
+    transform: translateY(-1px) scale(1.02) rotateX(3deg);
+  }
+  
+  .progress:focus {
+    outline: none;
+    /* Advanced Visuals: Pulsating Outline */
+    animation: pulseOutline 1.5s ease-in-out infinite alternate, breatheProgress 3s ease-in-out infinite alternate paused; /* Pause breathing on focus */
+    border: 1px solid var(--highlight-color); /* Fallback */
+  }
+  
+  @keyframes pulseOutline {
+    0% { box-shadow: 0 0 5px var(--highlight-color); }
+    100% { box-shadow: 0 0 15px var(--highlight-color); }
+  }
+  
+  .progress::-webkit-slider-thumb {
     appearance: none;
-    width: 1px;
+    width: 1px; /* Hide default thumb */
     height: 18px;
     cursor: pointer;
     border-radius: 999px;
     -webkit-appearance: none;
     background-color: transparent;
-}
-
+  }
+  
+  /* Custom Thumb Styling */
+  .progress::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(var(--progress-value) * (100% - 16px) / 100%); /* Adjust for thumb size */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--text-item-hover);
+    transform: translateY(-50%) scale(1);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .progress:hover::before,
+  .progress:focus::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.3);
+    box-shadow: 0 2px 8px var(--text-item-hover);
+  }
+  
+  .progress:active::before {
+    transform: translateY(-50%) scale(0.9);
+    background-color: var(--accent-color);
+    box-shadow: 0 1px 3px var(--accent-color);
+  }
+  
+  /* Subtle "Slide In" Animation on Load */
+  .progress {
+    transform: translateY(5px);
+    opacity: 0;
+    animation: slideInProgress 0.3s ease-out forwards 0.2s, breatheProgress 3s ease-in-out infinite alternate; /* Apply breathing on load */
+  }
+  
+  @keyframes slideInProgress {
+    0% { transform: translateY(5px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
  /* Volume */
  .player__volume-progress {
     width: 70px;
@@ -2030,8 +2578,77 @@ label .container__header-icon {
     text-align: center;
     border-radius: 15px;
     -webkit-tap-highlight-color: transparent;
-}
-
+    /* Advanced Visuals: Subtle Background and Shadow */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    /* Breathing Effect */
+    transform-origin: center center;
+    animation: breathePopupItem 2.5s ease-in-out infinite alternate;
+  }
+  
+  @keyframes breathePopupItem {
+    0% { transform: scale(1); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); }
+    50% { transform: scale(1.03); box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15); }
+    100% { transform: scale(1); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); }
+  }
+  
+  .player__popup-item:hover {
+    background: linear-gradient(135deg, rgba(var(--highlight-color-rgb), 0.15), rgba(var(--highlight-color-rgb), 0.05));
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px) scale(1.05); /* Combine hover with breathing */
+    animation-play-state: paused; /* Stop breathing on hover */
+  }
+  
+  .player__popup-item:active {
+    transform: translateY(1px) scale(0.98); /* Adjust active with breathing */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    animation-play-state: paused; /* Stop breathing on active */
+  }
+  
+  /* Advanced Visuals: Animated Border (remains as before) */
+  .player__popup-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .player__popup-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 10%, var(--accent-color) 40%, var(--highlight-color) 60%, transparent 90%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .player__popup-item:hover::before {
+    opacity: 0.3;
+    animation: shimmerBorder 1s linear infinite;
+  }
+  
+  @keyframes shimmerBorder {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  /* Advanced Visuals: Subtle "Pop In" Animation on Load (remains as before) */
+  .player__popup-item {
+    transform: scale(0.9);
+    opacity: 0.7;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-in-out;
+  }
+  
+  /* Staggered Appearance on Popup Open (remains as before) */
+  .player.open-popup .player__popup-container .player__popup-item {
+    transform: scale(1);
+    opacity: 1;
+    transition-delay: calc(0.08s * var(--item-index));
+    animation-play-state: running; /* Ensure breathing starts when popup opens */
+  }
 .player__popup-item.active {
     background-color: var(--tab-active-color);
 }
@@ -2114,30 +2731,133 @@ label .container__header-icon {
 .player__popup-cd-info h4 {
     font-size: 1.4rem;
     color: var(--text-secondary);
-}
-
-.player__popup-cd-info h2 {
+    opacity: 0.8;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.2, 0, 0.3, 1), color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Added color and text-shadow */
+    animation: breatheText 2.5s ease-in-out infinite alternate; /* Breathing animation */
+  }
+  
+  .player__popup-cd-info h4:hover {
+    color: var(--highlight-color); /* Color transition on hover */
+    text-shadow: 0 0 5px rgba(var(--highlight-color-rgb), 0.7); /* Glowing text on hover */
+    animation-play-state: paused; /* Stop breathing on hover */
+  }
+  
+  .player.open-popup .player__popup-cd-info h4 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+    animation-play-state: running; /* Start breathing when popup opens */
+  }
+  
+  .player__popup-cd-info h2 {
     margin: 0;
     padding: 0 10px;
     font-size: 2rem;
     line-height: 2.2rem;
     text-align: center;
     color: var(--text-color);
-}
-
-.player__popup-cd-info h3 {
+    opacity: 0.8;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.2, 0, 0.3, 1), color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Added color and text-shadow */
+    animation: breatheText 2.3s ease-in-out infinite alternate; /* Breathing animation */
+  }
+  
+  .player__popup-cd-info h2:hover {
+    color: var(--highlight-color); /* Color transition on hover */
+    text-shadow: 0 0 8px rgba(var(--highlight-color-rgb), 0.8); /* Glowing text on hover */
+    animation-play-state: paused; /* Stop breathing on hover */
+  }
+  
+  .player.open-popup .player__popup-cd-info h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+    animation-play-state: running; /* Start breathing when popup opens */
+  }
+  
+  .player__popup-cd-info h3 {
     padding: 0 10px;
     font-size: 1.2rem;
     text-align: center;
     line-height: 1.2rem;
-    color: var(--text-secondary)
-}
-
-.player__popup-cd-info a {
+    color: var(--text-secondary);
+    opacity: 0.8;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.2, 0, 0.3, 1), color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Added color and text-shadow */
+    animation: breatheText 2.7s ease-in-out infinite alternate; /* Breathing animation */
+  }
+  
+  .player__popup-cd-info h3:hover {
+    color: var(--highlight-color); /* Color transition on hover */
+    text-shadow: 0 0 4px rgba(var(--highlight-color-rgb), 0.6); /* Glowing text on hover */
+    animation-play-state: paused; /* Stop breathing on hover */
+  }
+  
+  .player.open-popup .player__popup-cd-info h3 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+    animation-play-state: running; /* Start breathing when popup opens */
+  }
+  
+  .player__popup-cd-info a {
     color: var(--text-secondary);
     text-decoration: none;
-}
-
+    opacity: 0.8;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.2, 0, 0.3, 1), color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Added color and text-shadow */
+    animation: breatheText 2.9s ease-in-out infinite alternate; /* Breathing animation */
+  }
+  
+  .player__popup-cd-info a:hover {
+    color: var(--highlight-color); /* Color transition on hover */
+    text-shadow: 0 0 3px rgba(var(--highlight-color-rgb), 0.5); /* Glowing text on hover */
+    animation-play-state: paused; /* Stop breathing on hover */
+  }
+  
+  .player.open-popup .player__popup-cd-info a {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+    animation-play-state: running; /* Start breathing when popup opens */
+  }
+  
+  /* Breathing Animation Keyframes */
+  @keyframes breatheText {
+    0% { opacity: 0.8; transform: translateY(5px) scale(1); }
+    50% { opacity: 1; transform: translateY(0) scale(1.02); }
+    100% { opacity: 0.8; transform: translateY(5px) scale(1); }
+  }
+  
+  /* Advanced Visuals: Subtle "Slide In" Animation on Load (remains) */
+  .player__popup-cd-info h4,
+  .player__popup-cd-info h2,
+  .player__popup-cd-info h3,
+  .player__popup-cd-info a {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  
+  .player.open-popup .player__popup-cd-info h4,
+  .player.open-popup .player__popup-cd-info h2,
+  .player.open-popup .player__popup-cd-info h3,
+  .player.open-popup .player__popup-cd-info a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .player.open-popup .player__popup-cd-info h2 {
+    transition-delay: 0.1s;
+  }
+  
+  .player.open-popup .player__popup-cd-info h3 {
+    transition-delay: 0.2s;
+  }
+  
+  .player.open-popup .player__popup-cd-info a {
+    transition-delay: 0.3s;
+  }
 .player__popup .player__popup-footer {
     width: 100%;
     display: flex;
