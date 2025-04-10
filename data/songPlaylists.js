@@ -45,38 +45,38 @@ var listSong = [
             image: "./assets/img/music/listSong1/song37.jpg"
         },
         {
-            name: "God Damn",
-            singer: ["Karan Aujla Ft Badshah"],
+            name: "Young Goat",
+            singer: ["Cheema Y Ft Gur Sidhu"],
             path: "./assets/music/listSong1/song36.mp3",
             image: "./assets/img/music/listSong1/song35.jpg"
         },
         {
-            name: "Duldi Sharaab",
-            singer: ["Kulwinder Billa Ft Mehar Vaani"],
+            name: "Badnaam",
+            singer: ["Varinder Brar Ft Jai Randhawa"],
             path: "./assets/music/listSong1/song41.mp3",
             image: "./assets/img/music/listSong1/song40.jpg"
         },
         {
-            name: "5 PM",
-            singer: ["Inder Pandoori"],
+            name: "See My Hype",
+            singer: ["Roop Bhullar Ft Wazir Pattr"],
             path: "./assets/music/listSong1/song44.mp3",
             image: "./assets/img/music/listSong1/song42.jpg"
         },
         {
-            name: "Hu Jattiye",
-            singer: ["Dilpreet Dhillon Ft Gur Sidhu"],
+            name: "What We Do",
+            singer: ["Jxggi Ft Sickboi"],
             path: "./assets/music/listSong1/song38.mp3",
             image: "./assets/img/music/listSong1/song38.jpg"
         },
         {
-            name: "Stick Talk",
-            singer: ["Shooter Khalon Ft Gurlez Akhtar"],
+            name: "Badboy",
+            singer: ["Prem Dhillon Ft Gurlez Akhtar"],
             path: "./assets/music/listSong1/song26.mp3",
             image: "./assets/img/music/listSong1/song31.jpg"
         },
         {
-            name: "Jogi",
-            singer: ["Sukhe"],
+            name: "Trump",
+            singer: ["Cheema Y Ft Gur Sidhu"],
             path: "./assets/music/listSong1/song33.mp3",
             image: "./assets/img/music/listSong1/song34.jpg"
         },
@@ -87,26 +87,26 @@ var listSong = [
             image: "./assets/img/music/listSong1/song32.jpg"
         },
         {
-            name: "Lehnga",
-            singer: ["Ravneet"],
+            name: "Mirza",
+            singer: ["Kuldeep Manak"],
             path: "./assets/music/listSong1/song35.mp3",
             image: "./assets/img/music/listSong1/song27.jpg"
         },
         {
-            name: "Players",
-            singer: ["Karan Aujla Ft Badshah"],
+            name: "Jaanlewa",
+            singer: ["Amrit Maan Ft Mxrci"],
             path: "./assets/music/listSong1/song37.mp3",
             image: "./assets/img/music/listSong1/song36.jpg"
         },
         {
-            name: "Asla",
-            singer: ["Pari Pandher"],
+            name: "Red Leaf",
+            singer: ["Sippy Gill"],
             path: "./assets/music/listSong1/song32.mp3",
             image: "./assets/img/music/listSong1/song25.jpg"
         },
         {
-            name: "Tera Yaar Rakane",
-            singer: ["Shree Brar Ft Gurlez Akhtar"],
+            name: "Hadd Todta (Majhail)",
+            singer: ["Amrit Maan Ft Deep Jhandu"],
             path: "./assets/music/listSong1/song12.mp3",
             image: "./assets/img/music/listSong1/song12.jpg"
         },
@@ -123,8 +123,8 @@ var listSong = [
             image: "./assets/img/music/listSong1/song30.jpg"
         },
         {
-            name: "Car Culture",
-            singer: ["Laddi Chahal Ft Parmish Verma"],
+            name: "Hundo",
+            singer: ["Inderpal Moga Ft Sukha & Channi Nattan"],
             path: "./assets/music/listSong1/song31.mp3",
             image: "./assets/img/music/listSong1/song33.jpg"
         },
