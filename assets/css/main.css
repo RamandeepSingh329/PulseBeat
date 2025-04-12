@@ -11,20 +11,21 @@
 }
 
 /* Siderbar CSS */
+/* Sidebar CSS */
 .app__sidebar {
     width: 240px;
     height: 100%;
     display: flex;
     overflow: hidden;
     flex-direction: column;
-    background-color: var(--sidebar-bg);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.8)); /* Gradient from black to grey */
     -webkit-tap-highlight-color: transparent;
     position: relative; /* For positioning child elements */
-    transition: transform 0.3s ease; /* Smooth transition for sliding effect */
+    transition: transform 0.3s ease, background 0.3s ease; /* Smooth transition for sliding effect and background */
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
-
 /* Animation for sidebar opening */
+
 .app__sidebar.open {
     transform: translateX(0); /* Slide in */
 }
@@ -1577,7 +1578,15 @@ label .container__header-icon {
     background-size: 1920px auto;
     background-color: var(--layout-bg);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
+    animation: breatheWhitesmokeShadowPlayer 3.5s cubic-bezier(0.7, 0, 0.3, 1) infinite alternate; /* New animation */
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.18); /* Initial subtle shadow (pointing upwards) */
+  }
+  
+  @keyframes breatheWhitesmokeShadowPlayer {
+    0% { box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.18); } /* Initial shadow (upwards) */
+    50% { box-shadow: 0 -3px 10px whitesmoke, 0 0 15px 5px rgba(245, 245, 245, 0.3); } /* Whitesmoke shadow/glow */
+    100% { box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.18); } /* Back to initial shadow */
+  }
 
 .player__container {
     display: flex;
@@ -2436,6 +2445,70 @@ label .container__header-icon {
     background-color: transparent;
 }
 
+/* Player CSS */
+.player {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 400;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.8)); /* Gradient from black to grey */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Player Container */
+.player__container {
+    display: flex;
+    padding: 0 20px;
+    cursor: pointer;
+    align-items: center;
+    height: var(--player-height);
+    justify-content: space-between;
+    background-color: rgba(30, 30, 30, 0.9); /* Dark grey background */
+    transform-origin: 50% 50%; /* Center origin for scaling */
+    animation: smoothBreatheColorShadow 3.5s cubic-bezier(0.7, 0, 0.3, 1) infinite alternate; /* Smoother easing, longer duration */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); /* Initial subtle shadow */
+    transition: background-color 0.5s ease-in-out; /* Smooth background color transitions */
+}
+
+.player__container:hover {
+    background-color: rgba(40, 40, 40, 1); /* Darker grey on hover */
+}
+
+/* Pop-Up CD Player */
+.player__popup {
+    top: 100%;
+    left: 0;
+    z-index: 600;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    will-change: top;
+    align-items: center;
+    flex-direction: column;
+    background-repeat: repeat;
+    justify-content: flex-start;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(50, 50, 50, 0.9)); /* Gradient for pop-up */
+}
+
+.player.open-popup .player__popup {
+    top: 0;
+    will-change: top;
+    animation: popUpPlayer 0.3s linear;
+    -webkit-animation: popUpPlayer 0.3s linear;
+}
+
+/* Pop-Up CD Player Header */
+.player__popup-header {
+    width: 100%;
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    background-color: rgba(30, 30, 30, 0.9); /* Dark grey background for header */
+}
 
 
 .player__options {
@@ -2555,6 +2628,7 @@ label .container__header-icon {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .player__popup-menu {
@@ -2858,7 +2932,7 @@ label .container__header-icon {
   .player.open-popup .player__popup-cd-info a {
     transition-delay: 0.3s;
   }
-.player__popup .player__popup-footer {
+  .player__popup .player__popup-footer {
     width: 100%;
     display: flex;
     padding: 0 20px;
@@ -2868,7 +2942,7 @@ label .container__header-icon {
     background-repeat: repeat-x;
     height: var(--player-height);
     background-size: 1920px auto;
-    background-color: var(--player-bg);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 1), rgba(50, 50, 50, 1)); /* Gradient from black to grey */
 }
 
 .player__popup .player__right,

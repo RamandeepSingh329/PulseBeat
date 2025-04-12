@@ -129,14 +129,14 @@ var listSong = [
             image: "./assets/img/music/listSong1/song33.jpg"
         },
         {
-            name: "Doonghe Nain",
-            singer: ["Pari Pandher"],
+            name: "Untouchable",
+            singer: ["Tegi Pannu Ft Manni Sandhu"],
             path: "./assets/music/listSong1/song24.mp3",
             image: "./assets/img/music/listSong1/song24.jpg"
         },
         {
-            name: "Barood Dil",
-            singer: ["Korala Maan Ft Gurlez Akhtar"],
+            name: "Tell Me",
+            singer: ["Karan Aujla Ft OneRepublic "],
             path: "./assets/music/listSong1/song30.mp3",
             image: "./assets/img/music/listSong1/song28.jpg"
         },
@@ -147,8 +147,8 @@ var listSong = [
             image: "./assets/img/music/listSong1/song1.jpg"
         },
         {
-            name: "Qatil Surma",
-            singer: ["Himmat Sandhu"],
+            name: "Winning Speech",
+            singer: ["Karan Aujla"],
             path: "./assets/music/listSong1/song15.mp3",
             image: "./assets/img/music/listSong1/song15.jpg"
         },
