@@ -485,158 +485,140 @@
     justify-content: space-between;
 }
 
+/* Styles for the header search container */
 .header__with-search {
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
-}
-
-
-.header__button {
-    padding: 0;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-}
-
-.header__button-icon {
-    width: 24px;
-    height: 25px;
-    display: block;
-    text-align: center;
-    font-size: 2.2rem;
-    margin-right: 20px;
-    color: var(--text-color);
+    padding: 0 15px;
 }
 
 .header__search {
+    position: relative; /* For positioning the history dropdown */
     width: 100%;
-    height: 40px;
-    z-index: 300;
+    max-width: 400px;
     display: flex;
-    max-width: 540px;
-    position: relative;
     align-items: center;
-    border-radius: 20px;
-    color: var(--white-color);
-    border: 1px solid transparent;
-    background: var(--bg-content-color);
-
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.5s ease-in-out; /* Added transform transition */
+    animation: breathe-search-bar 3s ease-in-out infinite alternate; /* Breathing animation */
 }
 
+.header__search:focus-within {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 2px var(--accent-color, #ffab40), /* Focus outline */
+                0 5px 10px rgba(0, 0, 0, 0.15); /* More prominent shadow on focus */
+    transform: scale(1.02); /* Slight scale on focus */
+    animation-play-state: paused; /* Pause breathing on focus */
+}
+
+/* Style for the search input field */
+.header__search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--text-color-light, #fff);
+    font-size: 1rem;
+    padding: 10px 15px;
+    outline: none;
+    caret-color: var(--accent-color, #ffab40); /* Style the cursor color */
+}
+
+.header__search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Style for the search button (icon container) */
 .header__search-btn {
-    position: absolute;
-    top: 0;
-    left: 0;
-    order: 1;
-    z-index: 400;
-    height: 38px;
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
     display: flex;
-    border-top-left-radius: 20px;
-    background-color: transparent;
-    color: var(--placeholder-text);
-    border-bottom-left-radius: 20px;
-    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease-in-out; /* Hover effect for button with opacity */
+}
+
+.header__search-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.8; /* Slightly reduce opacity on hover */
 }
 
 .header__search-icon {
-    display: block;
-    margin: auto;
-    cursor: pointer;
-    font-size: 2rem;
-    padding: 1px 9px 1px;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s ease-in-out; /* Icon hover transition */
 }
 
-.header__search-input {
-    position: absolute;
-    top: 0;
-    flex: 1;
-    order: 2;
-    left: 38px;
-    border: none;
-    z-index: 400;
-    height: 38px;
-    outline: none;
-    overflow: hidden;
-    line-height: 4rem;
-    font-size: 1.4rem;
-    padding: 0 9px 0 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    background: transparent;
-    width: calc(100% - 38px);
-    color: var(--text-color);
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+.header__search-btn:hover .header__search-icon {
+    color: var(--accent-color, #ffab40); /* Change icon color on hover */
 }
 
-.header__search-input:focus::placeholder {
-    color: var(--placeholder-text);
-    opacity: 1;
-}
-
-.header__search-input:focus ~ .header__search-btn {
-    color: var(--text-color);
-}
-
-.header__search-input:focus ~ .header__search-btn .header__search-icon {
-    -webkit-text-stroke: 0.5px var(--primary-bg);
-}
-
-.header__search-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    opacity: 1; /* Firefox */
-    color: var(--placeholder-text);
-}
-  
-.header__search-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: var(--placeholder-text);
-}
-  
-.header__search-input::-ms-input-placeholder { /* Microsoft Edge */
-    color: var(--placeholder-text);
-}
-
-
+/* Style for the search history dropdown container */
 .header__search-history {
     position: absolute;
-    top: -1px;
+    top: calc(100% + 8px); /* Position below the search bar */
     left: 0;
-    right: 0;
-    z-index: 300;
-    display: none;
-    padding-top: 40px;
-    border-radius: 20px;
-    background-color: var(--primary-bg);
+    width: 100%;
+    background-color: rgba(var(--bg-primary-rgb), 0.9);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow for dropdown */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-in-out; /* Transition for shadow */
+    z-index: 10; /* Ensure it's above other header elements */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border for separation */
 }
 
-.header__search-input:focus ~ .header__search-history {
-    display: block;
+/* Show the search history when the search input is focused or hovered */
+.header__search:focus-within .header__search-history,
+.header__search:hover .header__search-history {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhance shadow when visible */
 }
 
+/* Style for the search history list */
 .header__search-list {
-    width: 100%;
-    margin: 0;
-    display: flex;
     list-style: none;
-    padding: 13px 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    padding: 8px 0;
+    margin: 0;
 }
 
-.header__search-item {
-    width: 100%;
-    display: flex;
-    padding: 8px 10px;
-    border-radius: 4px;
-    align-items: center;
-    justify-content: flex-start;
+/* Style for individual search history items */
+.header__search-list li {
+    padding: 10px 18px;
+    cursor: pointer;
+    color: var(--text-color-light, #fff);
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, transform 0.1s ease-in-out, color 0.2s ease-in-out; /* Item hover effect with color */
 }
 
-.header__search-item:hover {
-    background-color: var(--bg-content-color);
+.header__search-list li:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateX(2px); /* Subtle slide on hover */
+    color: var(--accent-color, #ffab40); /* Change text color on hover */
+}
+
+.header__search-list li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Breathing animation for the search bar */
+@keyframes breathe-search-bar {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.01); /* Subtle breathing scale */
+    }
 }
 
 .header__item-icon {
