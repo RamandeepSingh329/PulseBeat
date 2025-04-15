@@ -824,16 +824,7 @@
     border-color: var(--focus-color);
   }
   
-  /* Example CSS Variables */
-  /*
-  :root {
-    --bg-content-color: #333;
-    --primary-color: #444;
-    --text-color-secondary: #eee;
-    --text-color-primary-inverse: #fff;
-    --focus-color: #a0d4ff;
-  }
-  */
+  
   
   .header__nav-item:last-child .header__nav-btn {
     width: 38px;
