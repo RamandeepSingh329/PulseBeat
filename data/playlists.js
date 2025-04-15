@@ -14,11 +14,6 @@ var listPlaylist = [
         creator: "Pulse Beat",
         image: "./assets/img/playlists/playlist3.jpg"
     },
-    {
-        name: "Haryanvi Drip",
-        creator: "Pulse Beat",
-        image: "./assets/img/playlists/playlist4.jpg"
-    },
     
 ];
 
