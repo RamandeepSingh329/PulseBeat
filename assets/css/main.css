@@ -620,7 +620,74 @@
         transform: scale(1.01); /* Subtle breathing scale */
     }
 }
-
+.app__user-avatar {
+    position: relative; /* Needed for positioning the glow effect */
+    width: fit-content; /* Adjust as needed */
+    height: fit-content; /* Adjust as needed */
+  }
+  
+  .app__user-img {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes it circular */
+    object-fit: cover; /* Ensures the image covers the circle */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optional subtle shadow */
+    animation: breathe 2s infinite alternate; /* Breathing animation */
+  }
+  
+  .app__user-avatar::before {
+    content: '';
+    position: absolute;
+    top: -5px; /* Adjust to control glow spread */
+    left: -5px; /* Adjust to control glow spread */
+    right: -5px; /* Adjust to control glow spread */
+    bottom: -5px; /* Adjust to control glow spread */
+    background: rgba(0, 123, 255, 0.5); /* Adjust glow color and intensity */
+    border-radius: 50%;
+    z-index: -1; /* Place the glow behind the image */
+    opacity: 0;
+    animation: glow 1.5s infinite alternate; /* Glowing animation */
+  }
+  
+  .app__user-name {
+    display: block; /* Make it appear below the avatar */
+    margin-top: 10px; /* Adjust spacing */
+    text-align: center; /* Center the name */
+    color: #333; /* Adjust text color */
+    animation: glowText 2s infinite alternate; /* Glowing text animation */
+  }
+  
+  /* Keyframes for breathing animation */
+  @keyframes breathe {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05); /* Adjust the scale for the breathing effect */
+    }
+  }
+  
+  /* Keyframes for glowing animation */
+  @keyframes glow {
+    0% {
+      opacity: 0.5;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.8); /* Initial glow */
+    }
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.5); /* End glow */
+    }
+  }
+  
+  /* Keyframes for glowing text animation */
+  @keyframes glowText {
+    0% {
+      text-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+    100% {
+      text-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+    }
+  }
 .header__item-icon {
     font-size: 1.6rem;
     margin-right: 10px;
@@ -662,18 +729,113 @@
 
 .header__nav-btn {
     padding: 0;
-    width: 40px;
+    width: 65px; /* Slightly larger */
     border: none;
-    height: 40px;
+    height: 65px;
     margin: auto;
     outline: none;
     display: flex;
     cursor: pointer;
     border-radius: 50%;
     background: var(--bg-content-color);
-}
-
-.header__nav-item:last-child .header__nav-btn {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: background-color 0.2s ease-in-out, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), /* Soft outer shadow */
+                0 0 8px rgba(245, 245, 245, 0.3) inset; /* Subtle inner glow */
+    overflow: hidden;
+    border: 2px solid transparent; /* For animated border */
+  }
+  
+  .header__nav-btn::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    left: -15%;
+    width: 130%;
+    height: 130%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(245, 245, 245, 0.5) 15%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(0.7);
+    z-index: -1;
+  }
+  
+  .header__nav-btn:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15), /* Enhanced outer shadow */
+                0 0 12px rgba(245, 245, 245, 0.5) inset, /* Stronger inner glow */
+                0 0 20px rgba(245, 245, 245, 0.4); /* Outer whitesmoke glow */
+    border-color: rgba(245, 245, 245, 0.6); /* Animated border appearance */
+  }
+  
+  .header__nav-btn:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .header__nav-btn:active {
+    transform: scale(0.92);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2),
+                0 0 6px rgba(245, 245, 245, 0.4) inset;
+    border-color: transparent; /* Remove border on active */
+  }
+  
+  /* Subtle "Pulse" Animation (refined) */
+  @keyframes subtlePulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 8px rgba(245, 245, 245, 0.3) inset;
+    }
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15), 0 0 12px rgba(245, 245, 245, 0.5) inset;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 8px rgba(245, 245, 245, 0.3) inset;
+    }
+  }
+  
+  .header__nav-btn.pulse {
+    animation: subtlePulse 2.5s infinite alternate;
+  }
+  
+  .header__nav-btn svg,
+  .header__nav-btn i,
+  .header__nav-btn span {
+    color: var(--text-color-secondary);
+    font-size: 1.5em;
+    transition: color 0.2s ease-in-out;
+    z-index: 1;
+  }
+  
+  .header__nav-btn:hover svg,
+  .header__nav-btn:hover i,
+  .header__nav-btn:hover span {
+    color: var(--text-color-primary-inverse);
+  }
+  
+  .header__nav-btn:focus-visible {
+    box-shadow: 0 0 0 3px var(--focus-color), 0 0 15px rgba(245, 245, 245, 0.6);
+    border-color: var(--focus-color);
+  }
+  
+  /* Example CSS Variables */
+  /*
+  :root {
+    --bg-content-color: #333;
+    --primary-color: #444;
+    --text-color-secondary: #eee;
+    --text-color-primary-inverse: #fff;
+    --focus-color: #a0d4ff;
+  }
+  */
+  
+  .header__nav-item:last-child .header__nav-btn {
     width: 38px;
     height: 38px;
 }
