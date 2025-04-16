@@ -526,13 +526,6 @@ a {
 }
 
 
-.flex--center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 
 .flex--top-left {
     display: flex;
@@ -547,8 +540,34 @@ a {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-}
-
+    /* Initial styles */
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out; /* Added opacity to transition */
+    transform-origin: center center; /* Ensure scaling happens from the center */
+    opacity: 1; /* Initial opacity */
+    animation: breathe 2s ease-in-out infinite alternate; /* Apply breathing animation */
+  }
+  
+  .row__item-display:hover {
+    transform: scale(1.05); /* Expanding effect on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    opacity: 1; /* Ensure full opacity on hover */
+    animation-play-state: paused; /* Pause breathing animation on hover */
+  }
+  
+  /* Keyframes for the breathing effect */
+  @keyframes breathe {
+    0% {
+      opacity: 0.9;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+  }
 .row__item-display .blur {
     top: 0;
     left: 0;

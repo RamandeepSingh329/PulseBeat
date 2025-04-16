@@ -1025,35 +1025,54 @@
     line-height: 3.8rem;
     margin: 10px 0 5px;
     color: var(--text-color);
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Added color to transition */
-    animation: breatheColor 2.5s ease-in-out infinite alternate; /* Apply combined animation */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Removed transform from transition */
+    animation: expandRotateGlitch 8s infinite; /* Combined animation */
+    display: inline-block;
+    transform-origin: center center; /* Ensure rotation is around the center */
   }
   
   .app__user-name:hover {
-    color: var(--highlight-color); /* Change color on hover */
-    text-shadow: 0 0 5px var(--highlight-color); /* Add a subtle glow on hover */
-    transform: scale(1.03); /* Slight scale up on hover */
+    color: var(--highlight-color);
+    text-shadow: 0 0 5px var(--highlight-color);
   }
   
-  @keyframes breatheColor {
+  @keyframes expandRotateGlitch {
     0% {
       transform: scale(1);
-      color: var(--text-color);
-      text-shadow: none;
+      opacity: 1;
+      filter: none;
+    }
+    20% {
+      transform: scale(1.2); /* Expand */
+    }
+    40% {
+      transform: rotate(360deg) scale(1.2); /* Rotate while expanded */
+    }
+    45% {
+      transform: rotate(370deg) scale(1.1); /* Small glitch rotation */
+      opacity: 0.8;
+      filter: blur(2px) brightness(1.2);
     }
     50% {
-      transform: scale(1.04); /* Slight scale up */
-      color: var(--accent-color); /* Change color at the peak */
-      text-shadow: 0 0 8px var(--accent-color); /* Add a glow with the accent color */
+      transform: rotate(350deg) scale(1.3); /* Another glitch */
+      opacity: 0.6;
+      filter: blur(3px) brightness(1.1);
+    }
+    55% {
+      transform: rotate(360deg) scale(1.2); /* Back to expanded rotated */
+      opacity: 1;
+      filter: none;
+    }
+    75% {
+      transform: rotate(720deg) scale(1); /* Second rotation back to original size */
     }
     100% {
-      transform: scale(1);
-      color: var(--text-color);
-      text-shadow: none;
+      transform: rotate(720deg) scale(1);
+      opacity: 1;
+      filter: none;
     }
   }
-  
-.app__header-actions {
+  .app__header-actions {
     position: absolute;
     right: 30px;
     top: 85px;
@@ -1257,11 +1276,37 @@
     margin: 0;
     font-size: 2rem;
     text-transform: capitalize;
-}
-
-.container__header-title:hover{
+    transform-origin: center center; /* Ensure rotation and scale are centered */
+    animation: flickerTitle 0.8s infinite alternate,
+               rotateTitle 10s linear infinite,
+               pulseTitle 2s infinite alternate;
+  }
+  
+  .container__header-title:hover h3 {
+    /* You can adjust or remove hover effects if the animations are strong enough */
     color: var(--link-text-hover);
-}
+    /* transform: scale(1.08) rotate(10deg); */ /* Optional: Keep a subtle hover transform */
+  }
+  
+  /* Keyframes for flickering effect */
+  @keyframes flickerTitle {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+  }
+  
+  /* Keyframes for rotating effect */
+  @keyframes rotateTitle {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Keyframes for pulsing scale effect */
+  @keyframes pulseTitle {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 
 .container__header-actions {
     display: flex;
@@ -3963,4 +4008,19 @@ label .container__header-icon {
 .header__search-input:focus {
     outline: 2px solid var(--purple-primary); /* Clear focus outline */
     outline-offset: 2px; /* Space between outline and element */
+}
+.album__create-annotate {
+    display: none; /* This will completely remove the element from the layout */
+}
+.album__create-icon {
+    display: none; /* Completely removes the "+" icon and its space */
+}
+.album__create-icon {
+    display: none; /* Completely removes the "+" icon and its space */
+}
+
+
+.album__create-annotate {
+    flex-grow: 1; /* Allow this element to grow and fill available space */
+    margin-left: 10px; /* Optional: Add some space between the icon and text */
 }
