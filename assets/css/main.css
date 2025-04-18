@@ -627,68 +627,109 @@
   }
   
   .app__user-img {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Adjust size as needed */
-    border-radius: 50%; /* Makes it circular */
-    object-fit: cover; /* Ensures the image covers the circle */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optional subtle shadow */
-    animation: breathe 2s infinite alternate; /* Breathing animation */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    animation: breathe 2s infinite alternate;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for focus */
+  }
+  
+  .app__user-img:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.7); /* Indicate focus */
+  }
+  
+  .app__user-avatar {
+    position: relative;
+    display: inline-block;
   }
   
   .app__user-avatar::before {
     content: '';
     position: absolute;
-    top: -5px; /* Adjust to control glow spread */
-    left: -5px; /* Adjust to control glow spread */
-    right: -5px; /* Adjust to control glow spread */
-    bottom: -5px; /* Adjust to control glow spread */
-    background: rgba(0, 123, 255, 0.5); /* Adjust glow color and intensity */
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
     border-radius: 50%;
-    z-index: -1; /* Place the glow behind the image */
-    opacity: 0;
-    animation: glow 1.5s infinite alternate; /* Glowing animation */
+    background: conic-gradient(
+      #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff, #ff0000
+    );
+    z-index: -1;
+    animation: rainbow-spin 1.5s linear infinite;
   }
+  
+  .app__user-avatar::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    z-index: -2;
+    filter: blur(5px);
+    opacity: 0.7;
+    background: conic-gradient(
+      #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff, #ff0000
+    );
+    animation: rainbow-spin-reverse 1.5s linear infinite;
+  }
+  
+  /* Sprinkle effect on focus */
+  .app__user-avatar .sprinkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    z-index: 1; /* Above the rainbow rings */
+  }
+  
+  .app__user-avatar:focus-within .sprinkle {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /* Create multiple sprinkle elements with different positions and colors */
+  .app__user-avatar .sprinkle:nth-child(1) { top: 10%; left: 10%; background-color: #ff0000; }
+  .app__user-avatar .sprinkle:nth-child(2) { top: 20%; left: 80%; background-color: #ff7f00; transition-delay: 0.05s; }
+  .app__user-avatar .sprinkle:nth-child(3) { top: 70%; left: 30%; background-color: #ffff00; transition-delay: 0.1s; }
+  .app__user-avatar .sprinkle:nth-child(4) { top: 85%; left: 75%; background-color: #00ff00; transition-delay: 0.15s; }
+  .app__user-avatar .sprinkle:nth-child(5) { top: 40%; left: 90%; background-color: #0000ff; transition-delay: 0.2s; }
+  .app__user-avatar .sprinkle:nth-child(6) { top: 60%; left: 15%; background-color: #4b0082; transition-delay: 0.25s; }
+  .app__user-avatar .sprinkle:nth-child(7) { top: 90%; left: 50%; background-color: #8f00ff; transition-delay: 0.3s; }
+  .app__user-avatar .sprinkle:nth-child(8) { top: 5%; left: 50%; background-color: #ff0000; transition-delay: 0.35s; }
   
   .app__user-name {
-    display: block; /* Make it appear below the avatar */
-    margin-top: 10px; /* Adjust spacing */
-    text-align: center; /* Center the name */
-    color: #333; /* Adjust text color */
-    animation: glowText 2s infinite alternate; /* Glowing text animation */
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+    animation: glowText 2s infinite alternate;
   }
   
-  /* Keyframes for breathing animation */
   @keyframes breathe {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1.05); /* Adjust the scale for the breathing effect */
-    }
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
   }
   
-  /* Keyframes for glowing animation */
-  @keyframes glow {
-    0% {
-      opacity: 0.5;
-      box-shadow: 0 0 10px rgba(0, 123, 255, 0.8); /* Initial glow */
-    }
-    100% {
-      opacity: 1;
-      box-shadow: 0 0 20px rgba(0, 123, 255, 0.5); /* End glow */
-    }
+  @keyframes rainbow-spin {
+    100% { transform: rotate(360deg); }
   }
   
-  /* Keyframes for glowing text animation */
+  @keyframes rainbow-spin-reverse {
+    100% { transform: rotate(-360deg); }
+  }
+  
   @keyframes glowText {
-    0% {
-      text-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-    100% {
-      text-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
-    }
-  }
-.header__item-icon {
+    0% { text-shadow: 0 0 5px rgba(0, 123, 255, 0.5); }
+    100% { text-shadow: 0 0 15px rgba(0, 123, 255, 0.8); }
+  }.header__item-icon {
     font-size: 1.6rem;
     margin-right: 10px;
     line-height: 1.6rem;
