@@ -1039,81 +1039,174 @@
     height: 103px;
 }
 
-.app__user-img {
+.app__user-img-container { /* Create a container for positioning */
+    position: relative;
     width: 95px;
     height: 95px;
-    border-radius: 50%;
-    animation: breathe 1.5s ease-in-out infinite alternate; /* Apply the breathing animation */
   }
   
-  @keyframes breathe {
-    0% {
-      transform: scale(1);
-      opacity: 0.9; /* Slightly reduce opacity at the base */
-    }
-    50% {
-      transform: scale(1.05); /* Slightly scale up */
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0.9; /* Return to the base state */
-    }
+  .app__user-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: synthwave-breathe 1.5s ease-in-out infinite alternate;
+    box-shadow: 0 0 10px #ff6ec7; /* Neon pink glow */
+    position: relative; /* Needed for absolute positioning of pseudo-elements */
+    z-index: 1; /* Ensure the image is above the rotating elements */
   }
+  
+  .app__user-img::before,
+  .app__user-img::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: synthwave-rotate 3s linear infinite,
+               synthwave-pulse 1.5s ease-in-out infinite alternate,
+               synthwave-color-cycle 3s linear infinite alternate; /* New color cycle animation */
+    background-size: 200% 100%; /* Prepare for gradient animation */
+  }
+  
+  .app__user-img::before {
+    background-image: linear-gradient(to right, #ff6ec7, #00ced1, #ff6ec7);
+    top: -10px;
+    left: 40px;
+  }
+  
+  .app__user-img::after {
+    background-image: linear-gradient(to right, #a020f0, #ffa07a, #a020f0);
+    bottom: -10px;
+    right: 40px;
+    animation-delay: 0.5s; /* Offset the second dot's animation */
+  }
+  
   .app__user-name {
     font-size: 3.2rem;
     font-weight: 700;
     line-height: 3.8rem;
     margin: 10px 0 5px;
-    color: var(--text-color);
-    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Removed transform from transition */
-    animation: expandRotateGlitch 8s infinite; /* Combined animation */
+    color: #ff7f50; /* Initial synthwave color: Coral */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    animation: expandRotateGlitchSynthwave 8s infinite; /* Updated animation name */
     display: inline-block;
-    transform-origin: center center; /* Ensure rotation is around the center */
+    transform-origin: center center;
+    text-shadow: 0 0 10px #ff6ec7; /* Initial neon pink glow */
   }
   
   .app__user-name:hover {
-    color: var(--highlight-color);
-    text-shadow: 0 0 5px var(--highlight-color);
+    color: #00ced1; /* Hover synthwave color: Teal */
+    text-shadow: 0 0 15px #00ced1, 0 0 5px #ff6ec7; /* Enhanced glow on hover */
   }
   
-  @keyframes expandRotateGlitch {
+  @keyframes synthwave-breathe {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+      box-shadow: 0 0 5px #8a2be2;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 1;
+      box-shadow: 0 0 15px #ff6ec7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.8;
+      box-shadow: 0 0 5px #8a2be2;
+    }
+  }
+  
+  @keyframes synthwave-rotate {
+    0% {
+      transform: rotate(0deg) translateX(50px); /* Start at a distance */
+    }
+    100% {
+      transform: rotate(360deg) translateX(50px); /* Rotate around */
+    }
+  }
+  
+  @keyframes synthwave-pulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0.6;
+    }
+  }
+  
+  @keyframes synthwave-color-cycle {
+    0% {
+      background-color: #ff6ec7; /* Neon Pink */
+    }
+    33% {
+      background-color: #00ced1; /* Teal */
+    }
+    66% {
+      background-color: #a020f0; /* Purple */
+    }
+    100% {
+      background-color: #ff6ec7; /* Back to Neon Pink */
+    }
+  }
+  
+  @keyframes expandRotateGlitchSynthwave {
     0% {
       transform: scale(1);
       opacity: 1;
       filter: none;
+      color: #ccc; /* Light Grey */
+      text-shadow: 0 0 8px #666; /* Dark Grey Glow */
     }
     20% {
       transform: scale(1.2); /* Expand */
+      color: #eee; /* Slightly Lighter Grey */
     }
     40% {
       transform: rotate(360deg) scale(1.2); /* Rotate while expanded */
+      color: #fff; /* White */
+      text-shadow: 0 0 10px #fff; /* White Glow */
     }
     45% {
       transform: rotate(370deg) scale(1.1); /* Small glitch rotation */
       opacity: 0.8;
-      filter: blur(2px) brightness(1.2);
+      filter: blur(1px) brightness(1.1);
+      color: #aaa; /* Medium Grey */
+      text-shadow: 0 0 5px #aaa;
     }
     50% {
       transform: rotate(350deg) scale(1.3); /* Another glitch */
       opacity: 0.6;
-      filter: blur(3px) brightness(1.1);
+      filter: blur(2px) brightness(1.05);
+      color: #888; /* Darker Medium Grey */
+      text-shadow: 0 0 12px #888;
     }
     55% {
       transform: rotate(360deg) scale(1.2); /* Back to expanded rotated */
       opacity: 1;
       filter: none;
+      color: #ddd; /* Light Grey */
+      text-shadow: 0 0 8px #ddd;
     }
     75% {
       transform: rotate(720deg) scale(1); /* Second rotation back to original size */
+      color: #bbb; /* Medium Light Grey */
     }
     100% {
       transform: rotate(720deg) scale(1);
       opacity: 1;
       filter: none;
+      color: #ccc; /* Back to Light Grey */
+      text-shadow: 0 0 8px #666; /* Back to Dark Grey Glow */
     }
-  }
-  .app__header-actions {
+  }    .app__header-actions {
     position: absolute;
     right: 30px;
     top: 85px;
@@ -1312,41 +1405,52 @@
     text-decoration: none;
     color: var(--text-color);
 }
-
 .container__header-title h3 {
     margin: 0;
-    font-size: 2rem;
-    text-transform: capitalize;
-    transform-origin: center center; /* Ensure rotation and scale are centered */
-    animation: flickerTitle 0.8s infinite alternate,
-               rotateTitle 10s linear infinite,
-               pulseTitle 2s infinite alternate;
+    font-size: 2.2rem; /* Slightly larger for emphasis */
+    text-transform: uppercase; /* Synthwave often uses uppercase */
+    transform-origin: center center;
+    color: #ff7f50; /* Initial neon coral */
+    text-shadow: 0 0 10px #ff6ec7; /* Initial neon pink glow */
+    animation: flickerTitleSynthwave 0.8s infinite alternate,
+               rotateTitleSubtle 20s linear infinite, /* Slower rotation */
+               pulseTitleSubtle 2.5s infinite alternate, /* Slightly slower pulse */
+               colorCycleTitle 5s infinite alternate; /* New color cycle */
   }
   
   .container__header-title:hover h3 {
-    /* You can adjust or remove hover effects if the animations are strong enough */
-    color: var(--link-text-hover);
-    /* transform: scale(1.08) rotate(10deg); */ /* Optional: Keep a subtle hover transform */
+    color: #00ced1; /* Neon teal on hover */
+    text-shadow: 0 0 15px #00ced1, 0 0 5px #ff6ec7; /* Enhanced glow on hover */
+    /* transform: scale(1.05) rotate(5deg); */ /* Subtle hover movement */
   }
   
-  /* Keyframes for flickering effect */
-  @keyframes flickerTitle {
-    0% { opacity: 0.7; }
-    50% { opacity: 1; }
-    100% { opacity: 0.7; }
+  /* Keyframes for flickering effect (with color change) */
+  @keyframes flickerTitleSynthwave {
+    0% { opacity: 0.8; color: #ff7f50; text-shadow: 0 0 8px #ff6ec7; }
+    50% { opacity: 1; color: #00ffff; text-shadow: 0 0 12px #00ffff; }
+    100% { opacity: 0.8; color: #ff7f50; text-shadow: 0 0 8px #ff6ec7; }
   }
   
-  /* Keyframes for rotating effect */
-  @keyframes rotateTitle {
+  /* Keyframes for a very subtle rotation */
+  @keyframes rotateTitleSubtle {
     0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    100% { transform: rotate(5deg); } /* Very slight rotation */
   }
   
-  /* Keyframes for pulsing scale effect */
-  @keyframes pulseTitle {
+  /* Keyframes for a subtle pulsing scale */
+  @keyframes pulseTitleSubtle {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.02); } /* Very subtle pulse */
     100% { transform: scale(1); }
+  }
+  
+  /* Keyframes for cycling through synthwave colors */
+  @keyframes colorCycleTitle {
+    0% { color: #f0f0f0; text-shadow: 0 0 4px #f0f0f0; } /* Light Grey */
+    25% { color: #e0e0e0; text-shadow: 0 0 4px #e0e0e0; } /* Slightly Darker Light Grey */
+    50% { color: #d0d0d0; text-shadow: 0 0 4px #d0d0d0; } /* Medium Light Grey */
+    75% { color: #c0c0c0; text-shadow: 0 0 4px #c0c0c0; } /* Light Silver */
+    100% { color: #f0f0f0; text-shadow: 0 0 4px #f0f0f0; } /* Back to Light Grey */
   }
 
 .container__header-actions {
