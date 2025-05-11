@@ -4116,3 +4116,317 @@ label .container__header-icon {
     flex-grow: 1; /* Allow this element to grow and fill available space */
     margin-left: 10px; /* Optional: Add some space between the icon and text */
 }
+/* Smoothened animations for smartphones without removing visual effects */
+@media (max-width: 600px) {
+    /* --- App User Name flickerGlow and pulseGlow optimized --- */
+   /* Restore original flicker and pulse glow effect for app user name */
+@media (max-width: 600px) {
+    .app__user-name {
+      color: #00ffe7; /* Neon Aqua color */
+      animation: flickerGlow 2s infinite alternate, pulseGlow 1.5s ease-in-out infinite;
+      text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 30px #00ffe7, 0 0 40px #00ffe7; /* Initial glow */
+      transform-origin: center center;
+      display: inline-block;
+    }
+  
+    @keyframes flickerGlow {
+      0% {
+        opacity: 1;
+      }
+      5% {
+        opacity: 0.9;
+      }
+      10% {
+        opacity: 0.85;
+      }
+      15% {
+        opacity: 0.95;
+      }
+      20% {
+        opacity: 0.5;
+      }
+      25% {
+        opacity: 0.9;
+      }
+      30% {
+        opacity: 0.4;
+      }
+      35% {
+        opacity: 0.95;
+      }
+      40% {
+        opacity: 0.8;
+      }
+      45% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+      55% {
+        opacity: 0.7;
+      }
+      60% {
+        opacity: 0.85;
+      }
+      65% {
+        opacity: 1;
+      }
+      70% {
+        opacity: 0.95;
+      }
+      75% {
+        opacity: 0.5;
+      }
+      80% {
+        opacity: 0.9;
+      }
+      85% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.95;
+      }
+      95% {
+        opacity: 0.85;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    @keyframes pulseGlow {
+      0% {
+        text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 30px #00ffe7, 0 0 40px #00ffe7;
+        transform: scale(1);
+      }
+      50% {
+        text-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe7, 0 0 60px #00ffe7, 0 0 80px #00ffe7;
+        transform: scale(1.05);
+      }
+      100% {
+        text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 30px #00ffe7, 0 0 40px #00ffe7;
+        transform: scale(1);
+      }
+    }
+  }
+  
+  
+    /* --- User Avatar glowing rings smooth opacity pulse --- */
+    .app__user-avatar::before,
+    .app__user-avatar::after {
+      animation: smoothGlowOpacityPulse 6s ease-in-out infinite;
+      will-change: opacity;
+    }
+  
+    @keyframes smoothGlowOpacityPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.85; }
+    }
+  
+    /* --- User Avatar sprinkle effect: opacity transition smooth --- */
+    .app__user-avatar .sprinkle {
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+  
+    /* --- User Image breathing animation slowed and smoothed --- */
+    .app__user-img {
+      animation: smoothBreatheScale 6s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+  
+    @keyframes smoothBreatheScale {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+  
+    /* --- Rotating thumb on song slowed for performance --- */
+    .player__song-info.playing .player__song-thumb .thumb-img {
+      animation-duration: 20s !important;
+      animation-timing-function: linear !important;
+      animation-name: rotateThumbSmooth !important;
+    }
+  
+    @keyframes rotateThumbSmooth {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  
+    /* --- Thumb notes animations slowed and smoothed --- */
+    .player__song-info.playing .thumb-note.note-1,
+    .player__song-info.playing .thumb-note.note-2,
+    .player__song-info.playing .thumb-note.note-3,
+    .player__song-info.playing .thumb-note.note-4 {
+      animation-duration: 10s !important;
+      animation-timing-function: ease-in-out !important;
+    }
+  
+    /* --- Control buttons and pulse animations slowed and optimized --- */
+    .player__control.breathe,
+    .btn-toggle-play i,
+    .player__control .control-btn.active,
+    .player__control .btn-repeat.active,
+    .player__control .btn-random.active,
+    .player__control .btn-next.active,
+    .player__control .btn-prev.active {
+      animation-duration: 6s !important;
+      animation-timing-function: ease-in-out !important;
+    }
+  
+    /* --- Pop-up player animation slowed and smoothed --- */
+    @keyframes popUpPlayer {
+      0% { top: 100%; }
+      100% { top: 0; }
+    }
+  
+    /* --- Popup item shimmer border animation slowed --- */
+    .player__popup-item:hover::before {
+      animation-duration: 4s !important;
+      animation-timing-function: ease-in-out !important;
+    }
+  
+    /* --- Search bar breath animation slowed --- */
+    @keyframes breathe-search-bar {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.005); }
+    }
+  
+    /* --- Background animation slowed --- */
+    @keyframes backgroundAnimation {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 50% 50%; }
+    }
+  
+    /* --- General will-change hints for smoother GPU acceleration --- */
+    .app__user-img,
+    .app__user-name,
+    .player__container,
+    .player__control.breathe,
+    .btn-toggle-play i,
+    .player__popup-item,
+    .player__song-info.playing .player__song-thumb .thumb-img {
+      will-change: transform, opacity;
+    }
+  
+    /* --- Remove scale on hover for mobile (no hover) and replace with opacity --- */
+    .sidebar__nav-item:hover,
+    .sidebar__item-link:hover,
+    .header__button:hover,
+    .player__control-btn:hover,
+    .playlist__list-song:hover {
+      transform: none !important;
+      opacity: 0.95 !important;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1) !important;
+    }
+  }
+  
+/* Smooth animation improvements for smartphones */
+@media (max-width: 600px) {
+    /* Use hardware-accelerated properties only (transform, opacity) */
+    
+    /* Slow down and smooth flickerGlow animation on user name */
+    .app__user-name {
+      animation-duration: 6s !important;
+      animation-timing-function: ease-in-out !important;
+      animation-iteration-count: infinite !important;
+      animation-name: smoothFlickerGlow !important;
+    }
+  
+    @keyframes smoothFlickerGlow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+  
+    /* Ease breathing animations with longer duration and ease-in-out */
+    .app__user-img,
+    .player__container,
+    .player__control.breathe {
+      animation-timing-function: ease-in-out !important;
+      animation-duration: 6s !important;
+    }
+  
+    /* Replace flickering box-shadow with subtle opacity pulse for user avatar glow */
+    .app__user-avatar::before,
+    .app__user-avatar::after {
+      animation: smoothGlowPulse 5s ease-in-out infinite !important;
+    }
+  
+    @keyframes smoothGlowPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.85; }
+    }
+  
+    /* Remove scale animations on hover and replaced with subtle opacity changes */
+    .sidebar__nav-item:hover,
+    .sidebar__item-link:hover,
+    .header__button:hover,
+    .player__control-btn:hover,
+    .playlist__list-song:hover {
+      transform: none !important;
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1) !important;
+      opacity: 0.95 !important;
+    }
+  
+    /* Slow down and smooth breathing & pulse animations for buttons & controls */
+    .btn-toggle-play i,
+    .player__control .control-btn.active,
+    .player__control .btn-repeat.active,
+    .player__control .btn-random.active,
+    .player__control .btn-next.active,
+    .player__control .btn-prev.active {
+      animation-duration: 4s !important;
+      animation-timing-function: ease-in-out !important;
+      animation-iteration-count: infinite !important;
+    }
+  
+    /* Slow down rotate animation on the spinning thumb */
+    .player__song-info.playing .player__song-thumb .thumb-img {
+      animation-duration: 20s !important;
+      animation-timing-function: linear !important;
+    }
+  
+    /* Slow down pulse animations on playing thumb notes */
+    .player__song-info.playing .thumb-note {
+      animation-duration: 10s !important;
+      animation-timing-function: ease-in-out !important;
+    }
+  
+    /* Smooth pop-up animations with ease-in-out */
+    @keyframes popUpPlayer {
+      0% { top: 100%; }
+      100% { top: 0; }
+    }
+  
+    /* Slow down and smooth border shimmer */
+    .player__popup-item:hover::before {
+      animation-duration: 3s !important;
+      animation-timing-function: ease-in-out !important;
+    }
+  
+    /* Slow background animation on app */
+    @keyframes backgroundAnimation {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 50% 50%; }
+    }
+  
+    /* Slow breathing animation on search bar */
+    @keyframes breathe-search-bar {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.005); }
+    }
+  
+    /* Use will-change to optimize transform and opacity animations */
+    .app__user-img,
+    .app__user-name,
+    .player__container,
+    .player__control.breathe,
+    .btn-toggle-play i,
+    .player__popup-item,
+    .player__song-info.playing .player__song-thumb .thumb-img {
+      will-change: transform, opacity;
+    }
+  }
+  
+    
