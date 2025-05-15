@@ -4428,5 +4428,8 @@ label .container__header-icon {
       will-change: transform, opacity;
     }
   }
+.container__header-subtitle {
+  margin-bottom: 1.5rem; /* or margin-top depending on where the collision is */
+}
   
     
