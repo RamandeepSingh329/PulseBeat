@@ -1055,112 +1055,48 @@
 
 
 
+/* Default settings for all screen sizes */
 .app__user-name {
     font-size: 3.2rem;
     font-weight: 700;
     line-height: 3.8rem;
     margin: 10px 0 5px;
-    color: #00ffe7; /* Neon Aqua color */
+    color: transparent; /* Make text transparent to see gradient */
     text-align: center;
-    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
-    animation: flickerGlow 2s infinite, pulseGlow 1.5s ease-in-out infinite; /* Glitch and pulse animations */
+    background: linear-gradient(90deg, grey, white, black); /* Gradient colors */
+    background-size: 300% 100%; /* Stretch the background for animation */
+    background-clip: text; /* Apply the gradient to the text */
+    -webkit-background-clip: text; /* For Safari */
+    animation: gradientShift 4s linear infinite; /* Only gradient animation */
     display: inline-block;
     transform-origin: center center;
-    text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 30px #00ffe7, 0 0 40px #00ffe7; /* Initial glow */
+    text-shadow: none; /* Remove text shadow */
 }
 
-/* Hover effect: Enhanced glow */
+/* Color transition animation (gradient shift) */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%; /* Start from the left */
+    }
+    50% {
+        background-position: 100% 50%; /* Shift to the right */
+    }
+    100% {
+        background-position: 0% 50%; /* Return to the left */
+    }
+}
+
+/* Hover effect: Slightly enhanced gradient effect */
 .app__user-name:hover {
-    color: #00ced1; /* Change color on hover */
-    text-shadow: 
-        0 0 20px #00ffe7, 
-        0 0 40px #00ffe7, 
-        0 0 60px #00ffe7, 
-        0 0 80px #00ffe7, 
-        0 0 120px #00ffe7; /* More intense glow on hover */
+    background: linear-gradient(90deg, #444, #bbb, #333); /* Slightly darker shades on hover */
+    background-size: 300% 100%; /* Ensure animation still works */
+    -webkit-background-clip: text;
+    color: transparent; /* Keep text transparent for the gradient */
 }
 
-@keyframes flickerGlow {
-    0% {
-        opacity: 1;
-    }
-    5% {
-        opacity: 0.9;
-    }
-    10% {
-        opacity: 0.85;
-    }
-    15% {
-        opacity: 0.95;
-    }
-    20% {
-        opacity: 0.5;
-    }
-    25% {
-        opacity: 0.9;
-    }
-    30% {
-        opacity: 0.4;
-    }
-    35% {
-        opacity: 0.95;
-    }
-    40% {
-        opacity: 0.8;
-    }
-    45% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
-    55% {
-        opacity: 0.7;
-    }
-    60% {
-        opacity: 0.85;
-    }
-    65% {
-        opacity: 1;
-    }
-    70% {
-        opacity: 0.95;
-    }
-    75% {
-        opacity: 0.5;
-    }
-    80% {
-        opacity: 0.9;
-    }
-    85% {
-        opacity: 0.6;
-    }
-    90% {
-        opacity: 0.95;
-    }
-    95% {
-        opacity: 0.85;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-
-/* Pulsating Glow Effect */
-@keyframes pulseGlow {
-    0% {
-        text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 30px #00ffe7, 0 0 40px #00ffe7;
-        transform: scale(1);
-    }
-    50% {
-        text-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe7, 0 0 60px #00ffe7, 0 0 80px #00ffe7;
-        transform: scale(1.05);
-    }
-    100% {
-        text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 30px #00ffe7, 0 0 40px #00ffe7;
-        transform: scale(1);
-    }
+/* For smartphones (screen width <= 768px) */
+@media screen and (max-width: 768px) {
+    /* No changes for smartphones, it's kept as correct already */
 }
 
    .app__header-actions {
